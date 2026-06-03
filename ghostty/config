@@ -1,0 +1,7 @@
+theme = dark:catpuccin-mocha,light:catpuccin-latte
+font-family = "NotoSansM Nerd Font Mono"
+font-size = 9
+title = ""
+window-padding-x = 8
+window-padding-y = 8
+initial-command = "/bin/zsh -1 -c ~/.config/tmux-start.sh; exec zsh"
