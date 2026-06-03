@@ -1,0 +1,65 @@
+unbind r
+bind r source-file ~/.tmux.conf
+
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+
+set -g mouse on
+set -g base-index 1              # start indexing windows at 1 instead of 0
+set -g detach-on-destroy off     # don't exit from tmux when closing a session
+set -g escape-time 0             # zero-out escape time delay
+set -g history-limit 1000000     # increase history size (from 2,000)
+set -g renumber-windows on       # renumber all windows when any window is closed
+set -g pane-border-status top
+set-option -g status-position top
+
+bind -n C-h select-pane -L
+bind -n C-j select-pane -D
+bind -n C-k select-pane -U
+bind -n C-l select-pane -R
+
+bind \\ split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
+
+unbind '"'
+unbind %
+
+unbind x
+bind x "kill-pane"
+
+unbind &
+bind & "kill-window"
+
+bind k "kill-server"
+
+bind-key -r i display-popup -T "Cheat Sheet" "/bin/zsh -c \"/Users/michael/.local/bin/chtsht\""
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'erikw/tmux-powerline'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'omerxx/tmux-sessionx'
+
+set -g @plugin 'fcsonline/tmux-thumbs'
+set -g @plugin 'sainnhe/tmux-fzf'
+set -g @plugin 'wfxr/tmux-fzf-url'
+set -g @plugin 'thewtex/tmux-mem-cpu-load'
+
+set -g @resurrect-capture-pane-contents 'on'
+set -g @continuum-restore 'off'
+
+set -g status-style 'fg=color0,bg=color250'
+
+set -g @sessionx-custom-paths "$HOME/Projects,$HOME/Library/Mobile Documents/com~apple~CloudDocs/Projects"
+set -g @sessionx-custom-paths-subdirectories 'false'
+set -g @sessionx-auto-accept 'off'
+set -g @sessionx-zoxide-mode 'on'
+set -g @sessionx-custom-paths-subdirectories 'false'
+set -g @sessionx-filter-current 'false'
+
+run '~/.tmux/plugins/tpm/tpm'
+

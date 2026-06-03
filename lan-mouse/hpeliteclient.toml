@@ -1,0 +1,10 @@
+[connection]
+is_server = true
+
+[edges]
+hpeliteclient = { right = "intelpro" }
+intelpro = { left = "hpeliteclient" }
+
+[devices]
+intelpro = { ip = "192.168.234.8" }
+

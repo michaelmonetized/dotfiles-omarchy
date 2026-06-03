@@ -1,0 +1,25 @@
+eval "$(fzf --zsh)"
+
+eval "$(zoxide init --cmd cd zsh)"
+# eval "$(thefuck --alias)"
+# eval "$(thefuck --alias fk)"
+
+zcd() {
+  if [ "$#" -eq 0 ]; then
+    cd
+  else
+    cd "$@"
+  fi
+
+  if [ -f ./.direnv ]; then
+    source ./.direnv
+  fi
+
+  if [ -f ./.welcome ]; then
+    ./.welcome
+    else
+      ascii-commit-graph --full-width --show-todos --show-issues
+  fi
+}
+
+alias cd="zcd"
