@@ -1,0 +1,5 @@
+2026/06/03-12:05:04.786 3240 Creating DB /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB since it was missing.
+2026/06/03-12:05:04.876 3240 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/06/03-12:13:15.500 3243 Level-0 table #5: started
+2026/06/03-12:13:15.528 3243 Level-0 table #5: 169942 bytes OK
+2026/06/03-12:13:15.616 3243 Delete type=0 #3
