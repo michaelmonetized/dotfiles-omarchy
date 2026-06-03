@@ -1,0 +1,6 @@
+2026/06/02-06:36:49.597 16819b Creating DB /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.icloud.com_0.indexeddb.leveldb since it was missing.
+2026/06/02-06:36:49.601 16819b Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.icloud.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/02-12:46:06.429 16819c Level-0 table #5: started
+2026/06/02-12:46:06.463 16819c Level-0 table #5: 6116 bytes OK
+2026/06/02-12:46:06.466 16819c Delete type=0 #3
+2026/06/02-12:46:06.466 16819c Manual compaction at level-0 from (begin) .. (end); will stop at (end)

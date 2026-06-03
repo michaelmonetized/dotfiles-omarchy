@@ -1,0 +1,6 @@
+2026/05/31-10:55:00.085 7ab Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/05/31-10:55:00.089 7ab Recovering log #7
+2026/05/31-10:55:00.090 7ab Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000007.log 
+2026/05/31-11:51:47.400 7ac Level-0 table #11: started
+2026/05/31-11:51:47.410 7ac Level-0 table #11: 132779 bytes OK
+2026/05/31-11:51:47.446 7ac Delete type=0 #7

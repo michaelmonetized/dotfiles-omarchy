@@ -1,0 +1,39 @@
+2026/06/01-08:39:33.287 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/MANIFEST-000001
+2026/06/01-08:39:33.310 5 Recovering log #3
+2026/06/01-08:39:33.315 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/000003.log 
+2026/06/01-22:52:47.922 9 Level-0 table #5: started
+2026/06/01-22:52:47.932 9 Level-0 table #5: 16136 bytes OK
+2026/06/01-22:52:47.969 9 Delete type=0 #3
+2026/06/02-04:37:29.838 9 Level-0 table #7: started
+2026/06/02-04:37:29.842 9 Level-0 table #7: 10485 bytes OK
+2026/06/02-04:37:29.845 9 Delete type=0 #4
+2026/06/02-09:16:31.084 9 Level-0 table #9: started
+2026/06/02-09:16:31.163 9 Level-0 table #9: 17877 bytes OK
+2026/06/02-09:16:31.203 9 Delete type=0 #6
+2026/06/02-13:47:29.854 9 Level-0 table #11: started
+2026/06/02-13:47:29.892 9 Level-0 table #11: 11187 bytes OK
+2026/06/02-13:47:29.895 9 Delete type=0 #8
+2026/06/02-19:17:29.858 5 Level-0 table #13: started
+2026/06/02-19:17:29.863 5 Level-0 table #13: 10606 bytes OK
+2026/06/02-19:17:29.866 5 Delete type=0 #10
+2026/06/03-00:32:29.846 9 Level-0 table #15: started
+2026/06/03-00:32:29.855 9 Level-0 table #15: 10679 bytes OK
+2026/06/03-00:32:29.891 9 Delete type=0 #12
+2026/06/03-00:32:29.892 9 Compacting 4@0 + 1@1 files
+2026/06/03-00:32:29.896 9 Generated table #16@0: 36 keys, 5699 bytes
+2026/06/03-00:32:29.896 9 Compacted 4@0 + 1@1 files => 5699 bytes
+2026/06/03-00:32:29.898 9 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/03-00:32:29.900 9 Delete type=2 #7
+2026/06/03-00:32:29.900 9 Delete type=2 #9
+2026/06/03-00:32:29.900 9 Delete type=2 #11
+2026/06/03-00:32:29.900 9 Delete type=2 #13
+2026/06/03-00:32:29.900 9 Delete type=2 #15
+2026/06/03-06:02:30.083 9 Level-0 table #18: started
+2026/06/03-06:02:30.087 9 Level-0 table #18: 10980 bytes OK
+2026/06/03-06:02:30.123 9 Delete type=0 #14
+2026/06/03-09:41:16.971 9 Level-0 table #20: started
+2026/06/03-09:41:16.980 9 Level-0 table #20: 112293 bytes OK
+2026/06/03-09:41:17.017 9 Delete type=0 #17
+2026/06/03-09:42:30.775 9 Level-0 table #22: started
+2026/06/03-09:42:30.783 9 Level-0 table #22: 99677 bytes OK
+2026/06/03-09:42:30.822 9 Delete type=0 #19

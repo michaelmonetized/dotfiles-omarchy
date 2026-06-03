@@ -1,0 +1,6 @@
+[[clients]]
+hostname = "intelpro"
+position = "right"       # Moves your mouse right to switch screens
+activate_on_startup = true
+ips = ["192.168.234.8"]
+port = 4242

@@ -1,0 +1,4 @@
+ascii-image-converter ~/.config/hlogo.png -Ccf
+fastfetch
+ascii-commit-graph --full-width --author
+exit 0

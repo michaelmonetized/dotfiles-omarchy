@@ -1,0 +1,7 @@
+2026/06/01-08:40:10.584 16819c Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/WebStorage/16/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/06/01-08:40:10.584 16819c Recovering log #3
+2026/06/01-08:40:10.586 16819c Reusing old log /home/michael/.config/google-chrome-canary/Default/WebStorage/16/IndexedDB/indexeddb.leveldb/000003.log 
+2026/06/02-06:36:40.575 16819c Level-0 table #5: started
+2026/06/02-06:36:40.577 16819c Level-0 table #5: 7152 bytes OK
+2026/06/02-06:36:40.579 16819c Delete type=0 #3
+2026/06/02-06:36:40.579 16819c Manual compaction at level-0 from (begin) .. (end); will stop at (end)

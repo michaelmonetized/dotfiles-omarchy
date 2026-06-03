@@ -1,0 +1,12 @@
+{
+  "manifest_version": 2,
+  "name": "Optimization Guide On Device Taxonomy Model",
+  "version": "2026.2.12.1554",
+  "BaseModelSpec": {
+    "name": "taxonomy-tiny",
+    "version": "0.0.0.0",
+    "supported_performance_hints": [
+      3
+    ]
+  }
+}

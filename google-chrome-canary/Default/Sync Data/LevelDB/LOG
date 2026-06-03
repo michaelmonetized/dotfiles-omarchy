@@ -1,0 +1,6 @@
+2026/06/01-08:39:33.261 16819c Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/06/01-08:39:33.261 16819c Recovering log #10
+2026/06/01-08:39:33.274 16819c Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000010.log 
+2026/06/02-05:11:49.006 16819c Level-0 table #14: started
+2026/06/02-05:11:49.056 16819c Level-0 table #14: 117913 bytes OK
+2026/06/02-05:11:49.064 16819c Delete type=0 #10

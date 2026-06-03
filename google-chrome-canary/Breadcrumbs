@@ -1,0 +1,52 @@
+49:15:25 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:25 UserEducation.MessageNotShown.FeatureDisabled
+49:15:25 Tab12 StartNav1337 #google #renderer-script #link
+49:15:25 Tab12 FinishNav1337
+49:15:26 UserEducation.MessageNotShown
+49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:26 UserEducation.MessageNotShown.FeatureDisabled
+49:15:26 Tab12 StartNav1338 #google #renderer-script #link
+49:15:26 Tab12 FinishNav1338
+49:15:26 Tab12 StartNav1339 #google #renderer-script #link
+49:15:26 Tab12 FinishNav1339
+49:15:26 Tab12 StartNav1340 #google #renderer-script #link
+49:15:26 Tab12 FinishNav1340
+49:15:26 UserEducation.MessageNotShown
+49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:26 UserEducation.MessageNotShown.FeatureDisabled
+49:15:26 UserEducation.MessageNotShown
+49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:26 UserEducation.MessageNotShown.FeatureDisabled
+49:15:26 UserEducation.MessageNotShown
+49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:26 UserEducation.MessageNotShown.FeatureDisabled
+49:15:29 Tab12 StartNav1341 #google #renderer-script #link
+49:15:29 Tab12 FinishNav1341
+49:15:29 UserEducation.MessageNotShown
+49:15:29 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:29 UserEducation.MessageNotShown.FeatureDisabled
+49:15:33 Tab12 StartNav1342 #google #renderer-script #link
+49:15:34 Tab12 FinishNav1342
+49:15:34 UserEducation.MessageNotShown
+49:15:34 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:34 UserEducation.MessageNotShown.FeatureDisabled
+49:15:37 Tab12 StartNav1343 #google #renderer-script #link
+49:15:37 Tab12 FinishNav1343
+49:15:37 UserEducation.MessageNotShown
+49:15:37 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+49:15:37 UserEducation.MessageNotShown.FeatureDisabled
+49:15:37 Tab12 StartNav1344 #renderer-script #auto_subframe
+49:15:37 Tab12 StartNav1345 #renderer-script #auto_subframe
+49:15:37 Tab12 FinishNav1344
+49:15:37 Tab12 FinishNav1345
+49:15:48 Tab12 PageLoad
+49:15:48 Tab12 StartNav1346 #renderer-script #auto_subframe
+49:15:48 Tab12 FinishNav1346
+49:15:48 Tab12 PageLoad
+49:15:51 Tab12 PageLoad
+49:15:51 Tab12 PageLoad #google
+49:23:01 CloseTabByKey
+49:23:01 CloseTab_Accelerator
+49:23:01 Browser3 Close Tab12 at 0
+49:23:01 Widget Closed: BrowserWidget
+49:23:01 Widget Closed: RoundedOmniboxResultsFrameWindow
