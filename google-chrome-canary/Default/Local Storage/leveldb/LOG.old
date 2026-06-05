@@ -1,3 +1,18 @@
-2026/05/31-10:55:00.131 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/MANIFEST-000001
-2026/05/31-10:55:00.138 5 Recovering log #3
-2026/05/31-10:55:00.139 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/000003.log 
+2026/06/04-10:15:14.465 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/MANIFEST-000001
+2026/06/04-10:15:14.478 5 Recovering log #30
+2026/06/04-10:15:14.478 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Local Storage/leveldb/000030.log 
+2026/06/04-10:15:23.390 7 Level-0 table #34: started
+2026/06/04-10:15:23.399 7 Level-0 table #34: 31059 bytes OK
+2026/06/04-10:15:23.438 7 Delete type=0 #30
+2026/06/04-13:56:29.974 7 Level-0 table #36: started
+2026/06/04-13:56:29.979 7 Level-0 table #36: 16574 bytes OK
+2026/06/04-13:56:29.983 7 Delete type=0 #33
+2026/06/04-13:56:29.983 7 Compacting 4@0 + 1@1 files
+2026/06/04-13:56:30.000 7 Generated table #37@0: 185 keys, 249673 bytes
+2026/06/04-13:56:30.000 7 Compacted 4@0 + 1@1 files => 249673 bytes
+2026/06/04-13:56:30.002 7 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/04-13:56:30.004 7 Delete type=2 #26
+2026/06/04-13:56:30.004 7 Delete type=2 #28
+2026/06/04-13:56:30.004 7 Delete type=2 #31
+2026/06/04-13:56:30.004 7 Delete type=2 #34
+2026/06/04-13:56:30.004 7 Delete type=2 #36

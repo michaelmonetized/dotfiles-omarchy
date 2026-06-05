@@ -1,6 +1,27 @@
-2026/06/01-08:39:33.261 16819c Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
-2026/06/01-08:39:33.261 16819c Recovering log #10
-2026/06/01-08:39:33.274 16819c Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000010.log 
-2026/06/02-05:11:49.006 16819c Level-0 table #14: started
-2026/06/02-05:11:49.056 16819c Level-0 table #14: 117913 bytes OK
-2026/06/02-05:11:49.064 16819c Delete type=0 #10
+2026/06/04-13:59:15.026 a3dfc Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/06/04-13:59:15.028 a3dfc Recovering log #22
+2026/06/04-13:59:15.032 a3dfc Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000022.log 
+2026/06/04-14:17:30.404 a3dfc Level-0 table #26: started
+2026/06/04-14:17:30.416 a3dfc Level-0 table #26: 106764 bytes OK
+2026/06/04-14:17:30.457 a3dfc Delete type=0 #22
+2026/06/04-15:33:40.561 a3df9 Level-0 table #28: started
+2026/06/04-15:33:40.573 a3df9 Level-0 table #28: 90066 bytes OK
+2026/06/04-15:33:40.575 a3df9 Delete type=0 #25
+2026/06/04-16:31:22.447 a3df9 Level-0 table #30: started
+2026/06/04-16:31:22.469 a3df9 Level-0 table #30: 81792 bytes OK
+2026/06/04-16:31:22.477 a3df9 Delete type=0 #27
+2026/06/04-16:31:22.478 a3df9 Compacting 4@0 + 1@1 files
+2026/06/04-16:31:22.518 a3df9 Generated table #31@0: 138 keys, 24806 bytes
+2026/06/04-16:31:22.518 a3df9 Compacted 4@0 + 1@1 files => 24806 bytes
+2026/06/04-16:31:22.526 a3df9 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/04-16:31:22.528 a3df9 Delete type=2 #20
+2026/06/04-16:31:22.528 a3df9 Delete type=2 #23
+2026/06/04-16:31:22.531 a3df9 Delete type=2 #26
+2026/06/04-16:31:22.532 a3df9 Delete type=2 #28
+2026/06/04-16:31:22.532 a3df9 Delete type=2 #30
+2026/06/04-19:09:21.615 a3dfc Level-0 table #33: started
+2026/06/04-19:09:21.705 a3dfc Level-0 table #33: 93200 bytes OK
+2026/06/04-19:09:21.721 a3dfc Delete type=0 #29
+2026/06/04-19:55:30.938 a3df8 Level-0 table #35: started
+2026/06/04-19:55:30.986 a3df8 Level-0 table #35: 86578 bytes OK
+2026/06/04-19:55:31.007 a3df8 Delete type=0 #32

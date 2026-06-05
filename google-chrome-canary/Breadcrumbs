@@ -1,52 +1,58 @@
-49:15:25 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:25 UserEducation.MessageNotShown.FeatureDisabled
-49:15:25 Tab12 StartNav1337 #google #renderer-script #link
-49:15:25 Tab12 FinishNav1337
-49:15:26 UserEducation.MessageNotShown
-49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:26 UserEducation.MessageNotShown.FeatureDisabled
-49:15:26 Tab12 StartNav1338 #google #renderer-script #link
-49:15:26 Tab12 FinishNav1338
-49:15:26 Tab12 StartNav1339 #google #renderer-script #link
-49:15:26 Tab12 FinishNav1339
-49:15:26 Tab12 StartNav1340 #google #renderer-script #link
-49:15:26 Tab12 FinishNav1340
-49:15:26 UserEducation.MessageNotShown
-49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:26 UserEducation.MessageNotShown.FeatureDisabled
-49:15:26 UserEducation.MessageNotShown
-49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:26 UserEducation.MessageNotShown.FeatureDisabled
-49:15:26 UserEducation.MessageNotShown
-49:15:26 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:26 UserEducation.MessageNotShown.FeatureDisabled
-49:15:29 Tab12 StartNav1341 #google #renderer-script #link
-49:15:29 Tab12 FinishNav1341
-49:15:29 UserEducation.MessageNotShown
-49:15:29 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:29 UserEducation.MessageNotShown.FeatureDisabled
-49:15:33 Tab12 StartNav1342 #google #renderer-script #link
-49:15:34 Tab12 FinishNav1342
-49:15:34 UserEducation.MessageNotShown
-49:15:34 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:34 UserEducation.MessageNotShown.FeatureDisabled
-49:15:37 Tab12 StartNav1343 #google #renderer-script #link
-49:15:37 Tab12 FinishNav1343
-49:15:37 UserEducation.MessageNotShown
-49:15:37 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-49:15:37 UserEducation.MessageNotShown.FeatureDisabled
-49:15:37 Tab12 StartNav1344 #renderer-script #auto_subframe
-49:15:37 Tab12 StartNav1345 #renderer-script #auto_subframe
-49:15:37 Tab12 FinishNav1344
-49:15:37 Tab12 FinishNav1345
-49:15:48 Tab12 PageLoad
-49:15:48 Tab12 StartNav1346 #renderer-script #auto_subframe
-49:15:48 Tab12 FinishNav1346
-49:15:48 Tab12 PageLoad
-49:15:51 Tab12 PageLoad
-49:15:51 Tab12 PageLoad #google
-49:23:01 CloseTabByKey
-49:23:01 CloseTab_Accelerator
-49:23:01 Browser3 Close Tab12 at 0
-49:23:01 Widget Closed: BrowserWidget
-49:23:01 Widget Closed: RoundedOmniboxResultsFrameWindow
+6:09:00 Tab21 StartNav1300 #renderer-script #auto_subframe
+6:09:03 Tab21 FinishNav1300 ERR_ABORTED
+6:09:04 Tab21 StartNav1301 #renderer-script #auto_subframe
+6:09:04 Tab21 FinishNav1301
+6:09:04 Tab21 PageLoad
+6:09:07 Tab21 PageLoad #google
+6:09:15 Tab21 StartNav1302 #renderer-script #auto_subframe
+6:09:15 Tab21 FinishNav1302
+6:09:15 Tab21 PageLoad
+6:09:16 Tab21 StartNav1303 #renderer-script #auto_subframe
+6:09:16 Tab21 FinishNav1303
+6:09:16 Tab21 PageLoad
+6:09:58 Tab21 StartNav1304 #renderer-user #link
+6:09:58 Tab21 FinishNav1304
+6:09:58 UserEducation.MessageNotShown
+6:09:58 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+6:09:58 UserEducation.MessageNotShown.FeatureDisabled
+6:10:05 Tab21 StartNav1305 #renderer-user #link
+6:10:05 Tab21 FinishNav1305
+6:10:05 UserEducation.MessageNotShown
+6:10:05 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+6:10:05 UserEducation.MessageNotShown.FeatureDisabled
+6:10:19 Tab21 StartNav1306 #renderer-user #link
+6:10:19 Tab21 FinishNav1306
+6:10:19 UserEducation.MessageNotShown
+6:10:19 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+6:10:19 UserEducation.MessageNotShown.FeatureDisabled
+6:10:22 Tab21 StartNav1307 #renderer-user #auto_subframe
+6:10:22 Tab21 FinishNav1307
+6:10:23 Tab21 StartNav1308 #renderer-user #auto_subframe
+6:10:23 Tab21 FinishNav1308
+6:10:24 Tab21 StartNav1309 #renderer-script #auto_subframe
+6:10:25 Tab21 FinishNav1309
+6:10:27 Tab21 StartNav1310 #renderer-user #link
+6:10:27 Tab21 FinishNav1310
+6:10:27 UserEducation.MessageNotShown
+6:10:27 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+6:10:27 UserEducation.MessageNotShown.FeatureDisabled
+6:10:36 Tab21 PageLoad
+6:10:36 Tab21 PageLoad
+6:10:42 Tab21 PageLoad
+6:10:43 Widget Closed: StatusBubble
+6:12:13 Tab23 StartNav1311 #google #renderer-script #auto_subframe
+6:12:13 Tab23 StartNav1312 #renderer-script #auto_subframe
+6:12:13 Tab23 FinishNav1312
+6:12:13 Tab23 PageLoad
+6:12:13 Tab23 FinishNav1311
+6:12:21 Tab23 PageLoad #google
+6:12:25 Tab23 StartNav1313 #renderer-script #auto_subframe
+6:12:25 Tab23 FinishNav1313
+6:12:25 Tab23 PageLoad
+6:12:25 Tab23 StartNav1314 #renderer-script #auto_subframe
+6:12:25 Tab23 FinishNav1314
+6:12:25 Tab23 PageLoad
+6:14:03 Browser1 Closed 5 tabs
+6:14:05 Widget Closed: BrowserWidget
+6:14:05 Widget Closed: RoundedOmniboxResultsFrameWindow
+6:14:08 Shutdown

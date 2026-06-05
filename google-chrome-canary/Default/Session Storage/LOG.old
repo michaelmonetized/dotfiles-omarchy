@@ -1,6 +1,15 @@
-2026/05/31-10:55:03.057 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Session Storage/MANIFEST-000001
-2026/05/31-10:55:03.059 5 Recovering log #3
-2026/05/31-10:55:03.060 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Session Storage/000003.log 
-2026/05/31-11:12:25.527 7 Level-0 table #5: started
-2026/05/31-11:12:25.533 7 Level-0 table #5: 24546 bytes OK
-2026/05/31-11:12:25.537 7 Delete type=0 #3
+2026/06/04-10:15:14.653 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Session Storage/MANIFEST-000001
+2026/06/04-10:15:14.665 5 Recovering log #14
+2026/06/04-10:15:14.666 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Session Storage/000014.log 
+2026/06/04-11:03:25.548 5 Level-0 table #18: started
+2026/06/04-11:03:25.555 5 Level-0 table #18: 16266 bytes OK
+2026/06/04-11:03:25.558 5 Delete type=0 #14
+2026/06/04-11:03:25.564 7 Compacting 4@0 + 1@1 files
+2026/06/04-11:03:25.572 7 Generated table #19@0: 855 keys, 32495 bytes
+2026/06/04-11:03:25.572 7 Compacted 4@0 + 1@1 files => 32495 bytes
+2026/06/04-11:03:25.574 7 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/04-11:03:25.575 7 Delete type=2 #8
+2026/06/04-11:03:25.575 7 Delete type=2 #10
+2026/06/04-11:03:25.575 7 Delete type=2 #13
+2026/06/04-11:03:25.575 7 Delete type=2 #15
+2026/06/04-11:03:25.575 7 Delete type=2 #18

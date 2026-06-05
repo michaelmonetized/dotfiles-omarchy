@@ -1,6 +1,12 @@
-2026/06/02-08:46:39.315 16819c Creating DB /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb since it was missing.
-2026/06/02-08:46:39.338 16819c Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/06/02-08:47:11.340 16819c Level-0 table #5: started
-2026/06/02-08:47:11.374 16819c Level-0 table #5: 1419 bytes OK
-2026/06/02-08:47:11.376 16819c Delete type=0 #3
-2026/06/02-08:47:11.376 16819c Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2026/06/03-11:50:35.613 65a Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/03-11:50:35.613 65a Recovering log #4
+2026/06/03-11:50:35.614 65a Reusing old log /home/michael/.config/google-chrome-canary/Default/IndexedDB/https_www.reddit.com_0.indexeddb.leveldb/000004.log 
+2026/06/03-13:57:21.471 65a Level-0 table #8: started
+2026/06/03-13:57:21.507 65a Level-0 table #8: 1062112 bytes OK
+2026/06/03-13:57:21.511 65a Delete type=0 #4
+2026/06/03-14:31:01.925 659 Compacting 1@1 + 1@2 files
+2026/06/03-14:31:01.944 659 Generated table #9@1: 111 keys, 5936 bytes
+2026/06/03-14:31:01.945 659 Compacted 1@1 + 1@2 files => 5936 bytes
+2026/06/03-14:31:01.946 659 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/06/03-14:31:01.947 659 Delete type=2 #5
+2026/06/03-14:31:01.947 659 Delete type=2 #8

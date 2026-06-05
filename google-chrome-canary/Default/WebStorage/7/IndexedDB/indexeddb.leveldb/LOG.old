@@ -1,2 +1,3 @@
-2026/05/31-10:18:58.008 a218 Creating DB /home/michael/.config/google-chrome-canary/Default/WebStorage/7/IndexedDB/indexeddb.leveldb since it was missing.
-2026/05/31-10:18:58.020 a218 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/WebStorage/7/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/06/03-10:58:54.391 3d4ca0 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/WebStorage/7/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/06/03-10:58:54.399 3d4ca0 Recovering log #3
+2026/06/03-10:58:54.409 3d4ca0 Reusing old log /home/michael/.config/google-chrome-canary/Default/WebStorage/7/IndexedDB/indexeddb.leveldb/000003.log 
