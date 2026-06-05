@@ -2,3 +2,4 @@
 google-chrome-canary/**/*Cache*/
 google-chrome-canary/**/cache/
 google-chrome-canary/**/*cache*/
+google-chrome-canary/**/Cached*
