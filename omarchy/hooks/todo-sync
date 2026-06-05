@@ -1,0 +1,8 @@
+#!/bin/bash
+# Auto-sync TODO repository
+cd ~/TODO/
+if [ -n "$(git status --porcelain)" ]; then
+    git add .
+    git commit -m "Auto-sync: $(date)"
+    # git push # Assuming remote is set up
+fi
