@@ -1,0 +1,66 @@
+
+--- 2026-06-05T03:08:44.190Z debug
+🪵  Writing logs to "/home/michael/.config/.wrangler/logs/wrangler-2026-06-05_03-08-43_910.log"
+---
+
+--- 2026-06-05T03:08:44.190Z debug
+.env file not found at "/home/michael/Projects/uncap.us/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-06-05T03:08:44.203Z log
+
+ ⛅️ wrangler 4.98.0
+───────────────────
+---
+
+--- 2026-06-05T03:08:55.785Z log
+Successfully installed Cloudflare skills for: Claude Code, OpenCode, Codex, Gemini CLI, Pi.
+---
+
+--- 2026-06-05T03:08:55.788Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"skills_install_completed","timestamp":1780628935788,"properties":{"amplitude_session_id":1780628935786,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"category":"Workers","os":"linux:x64","agents":[{"name":"Claude Code","rosie":{"id":"claude","globalPath":"/home/michael/.claude/skills"}},{"name":"OpenCode","rosie":{"id":"opencode","globalPath":"/home/michael/.config/opencode/skills"}},{"name":"Codex","rosie":{"id":"codex","globalPath":"/home/michael/.codex/skills"}},{"name":"Gemini CLI","rosie":{"id":"gemini-cli","globalPath":"/home/michael/.gemini/skills"}},{"name":"Pi","rosie":{"id":"pi","globalPath":"/home/michael/.pi/agent/skills"}}],"currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:08:55.820Z log
+Attempting to login via OAuth...
+---
+
+--- 2026-06-05T03:08:55.824Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command started","timestamp":1780628935824,"properties":{"amplitude_session_id":1780628935802,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"login","sanitizedArgs":{},"currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:08:55.833Z log
+Opening a link in your default browser: https://dash.cloudflare.com/oauth2/auth?response_type=code&client_id=54d11594-84e4-41aa-b438-e81b8fa78ee7&redirect_uri=http%3A%2F%2Flocalhost%3A8976%2Foauth%2Fcallback&scope=account%3Aread%20user%3Aread%20workers%3Awrite%20workers_kv%3Awrite%20workers_routes%3Awrite%20workers_scripts%3Awrite%20workers_tail%3Aread%20d1%3Awrite%20pages%3Awrite%20zone%3Aread%20ssl_certs%3Awrite%20ai%3Awrite%20ai-search%3Awrite%20ai-search%3Arun%20websearch.run%20agent-memory%3Awrite%20queues%3Awrite%20pipelines%3Awrite%20secrets_store%3Awrite%20artifacts%3Awrite%20flagship%3Awrite%20containers%3Awrite%20cloudchamber%3Awrite%20connectivity%3Aadmin%20email_routing%3Awrite%20email_sending%3Awrite%20browser%3Awrite%20offline_access&state=uwKO10fV-jgPmCtlZr5UJtcH7hMFJuzr&code_challenge=hJ02U7w0pB45HZyNbLWQ21fBlRAeaW6hdpaE7ooXz0M&code_challenge_method=S256
+---
+
+--- 2026-06-05T03:09:55.227Z debug
+fetching auth token grant_type=authorization_code
+---
+
+--- 2026-06-05T03:09:55.227Z debug
+Checking if domain has Access enabled: dash.cloudflare.com
+---
+
+--- 2026-06-05T03:09:55.227Z debug
+Access switch not cached for: dash.cloudflare.com
+---
+
+--- 2026-06-05T03:09:55.631Z debug
+Caching access switch for: dash.cloudflare.com
+---
+
+--- 2026-06-05T03:09:55.631Z debug
+Fetching auth token from https://dash.cloudflare.com/oauth2/token
+---
+
+--- 2026-06-05T03:09:56.251Z log
+Successfully logged in.
+---
+
+--- 2026-06-05T03:09:56.275Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"login user","timestamp":1780628996275,"properties":{"amplitude_session_id":1780628996275,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"category":"Workers","os":"linux:x64","currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:09:56.279Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command completed","timestamp":1780628996278,"properties":{"amplitude_session_id":1780628935802,"amplitude_event_id":1,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":true,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"login","sanitizedArgs":{},"durationMs":72081,"currentAgentSkillsInstalled":null}}
+---

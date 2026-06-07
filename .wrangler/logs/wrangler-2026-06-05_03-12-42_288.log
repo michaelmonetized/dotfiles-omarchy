@@ -1,0 +1,270 @@
+
+--- 2026-06-05T03:12:43.811Z debug
+🪵  Writing logs to "/home/michael/.config/.wrangler/logs/wrangler-2026-06-05_03-12-42_288.log"
+---
+
+--- 2026-06-05T03:12:43.811Z debug
+.env file not found at "/home/michael/Projects/uncap.us/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-06-05T03:12:43.852Z log
+
+ ⛅️ wrangler 4.98.0
+───────────────────
+---
+
+--- 2026-06-05T03:12:43.938Z log
+Getting User settings...
+---
+
+--- 2026-06-05T03:12:43.946Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command started","timestamp":1780629163946,"properties":{"amplitude_session_id":1780629163883,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"whoami","sanitizedArgs":{},"currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:12:44.028Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/user
+---
+
+--- 2026-06-05T03:12:44.028Z debug
+QUERY STRING: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.030Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.030Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.030Z debug
+-- END CF API REQUEST
+---
+
+--- 2026-06-05T03:12:44.473Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2026-06-05T03:12:44.474Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.474Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.475Z debug
+-- END CF API RESPONSE
+---
+
+--- 2026-06-05T03:12:44.480Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/accounts
+---
+
+--- 2026-06-05T03:12:44.480Z debug
+QUERY STRING: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.481Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.481Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.481Z debug
+-- END CF API REQUEST
+---
+
+--- 2026-06-05T03:12:44.483Z debug
+-- START CF API REQUEST: GET https://api.cloudflare.com/client/v4/memberships
+---
+
+--- 2026-06-05T03:12:44.483Z debug
+QUERY STRING: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.483Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.483Z debug
+INIT: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.484Z debug
+-- END CF API REQUEST
+---
+
+--- 2026-06-05T03:12:44.939Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2026-06-05T03:12:44.939Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.939Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:44.940Z debug
+-- END CF API RESPONSE
+---
+
+--- 2026-06-05T03:12:45.102Z debug
+-- START CF API RESPONSE: OK 200
+---
+
+--- 2026-06-05T03:12:45.102Z debug
+HEADERS: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:45.102Z debug
+RESPONSE: omitted; set WRANGLER_LOG_SANITIZE=false to include sanitized data
+---
+
+--- 2026-06-05T03:12:45.102Z debug
+-- END CF API RESPONSE
+---
+
+--- 2026-06-05T03:12:45.106Z log
+👋 You are logged in with an OAuth Token, associated with the email michaelmonetized@gmail.com.
+---
+
+--- 2026-06-05T03:12:45.121Z log
+┌───────────────────────────────────────────┬──────────────────────────────────┐
+│ Account Name                              │ Account ID                       │
+├───────────────────────────────────────────┼──────────────────────────────────┤
+│ Freedom@everythingmonetized.com's Account │ da2339601f16d276f250694d61bc11ad │
+└───────────────────────────────────────────┴──────────────────────────────────┘
+---
+
+--- 2026-06-05T03:12:45.122Z log
+🔓 Token Permissions:
+---
+
+--- 2026-06-05T03:12:45.122Z log
+Scope (Access)
+---
+
+--- 2026-06-05T03:12:45.123Z log
+- account (read)
+---
+
+--- 2026-06-05T03:12:45.123Z log
+- user (read)
+---
+
+--- 2026-06-05T03:12:45.123Z log
+- workers (write)
+---
+
+--- 2026-06-05T03:12:45.124Z log
+- workers_kv (write)
+---
+
+--- 2026-06-05T03:12:45.124Z log
+- workers_routes (write)
+---
+
+--- 2026-06-05T03:12:45.124Z log
+- workers_scripts (write)
+---
+
+--- 2026-06-05T03:12:45.124Z log
+- workers_tail (read)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- d1 (write)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- pages (write)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- zone (read)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- ssl_certs (write)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- ai (write)
+---
+
+--- 2026-06-05T03:12:45.125Z log
+- ai-search (write)
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- ai-search (run)
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- websearch.run 
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- agent-memory (write)
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- queues (write)
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- pipelines (write)
+---
+
+--- 2026-06-05T03:12:45.126Z log
+- secrets_store (write)
+---
+
+--- 2026-06-05T03:12:45.127Z log
+- artifacts (write)
+---
+
+--- 2026-06-05T03:12:45.127Z log
+- flagship (write)
+---
+
+--- 2026-06-05T03:12:45.127Z log
+- containers (write)
+---
+
+--- 2026-06-05T03:12:45.127Z log
+- cloudchamber (write)
+---
+
+--- 2026-06-05T03:12:45.127Z log
+- connectivity (admin)
+---
+
+--- 2026-06-05T03:12:45.128Z log
+- email_routing (write)
+---
+
+--- 2026-06-05T03:12:45.128Z log
+- email_sending (write)
+---
+
+--- 2026-06-05T03:12:45.128Z log
+- browser (write)
+---
+
+--- 2026-06-05T03:12:45.128Z log
+- offline_access 
+---
+
+--- 2026-06-05T03:12:45.130Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"view accounts","timestamp":1780629165130,"properties":{"amplitude_session_id":1780629165129,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"category":"Workers","os":"linux:x64","currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:12:45.133Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command completed","timestamp":1780629165132,"properties":{"amplitude_session_id":1780629163883,"amplitude_event_id":1,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"whoami","sanitizedArgs":{},"durationMs":1304,"currentAgentSkillsInstalled":null}}
+---

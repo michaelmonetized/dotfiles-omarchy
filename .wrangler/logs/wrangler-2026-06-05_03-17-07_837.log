@@ -1,0 +1,30 @@
+
+--- 2026-06-05T03:17:09.184Z debug
+🪵  Writing logs to "/home/michael/.config/.wrangler/logs/wrangler-2026-06-05_03-17-07_837.log"
+---
+
+--- 2026-06-05T03:17:09.184Z debug
+.env file not found at "/home/michael/Projects/uncap.us/.env". Continuing... For more details, refer to https://developers.cloudflare.com/workers/wrangler/system-environment-variables/
+---
+
+--- 2026-06-05T03:17:09.254Z log
+
+ ⛅️ wrangler 4.98.0
+───────────────────
+---
+
+--- 2026-06-05T03:17:09.397Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command started","timestamp":1780629429396,"properties":{"amplitude_session_id":1780629429306,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"auth token","sanitizedArgs":{},"currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:17:09.525Z log
+cfoat_IDuh4SiYKrLkQdl9l9BhjpP4oYpkOMMSuYhodNH82XQ.-9QbqlyVxQRw6KzimTwNpgb4cvyfYYA3ceUXw_0LG_k
+---
+
+--- 2026-06-05T03:17:09.530Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"retrieve auth token","timestamp":1780629429530,"properties":{"amplitude_session_id":1780629429526,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"category":"Workers","os":"linux:x64","currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-05T03:17:09.539Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command completed","timestamp":1780629429539,"properties":{"amplitude_session_id":1780629429306,"amplitude_event_id":1,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"auth token","sanitizedArgs":{},"durationMs":319,"currentAgentSkillsInstalled":null}}
+---
