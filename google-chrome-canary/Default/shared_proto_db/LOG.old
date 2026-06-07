@@ -1,3 +1,6 @@
-2026/06/04-10:15:14.766 286f08 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/shared_proto_db/MANIFEST-000001
-2026/06/04-10:15:14.766 286f08 Recovering log #3
-2026/06/04-10:15:14.768 286f08 Reusing old log /home/michael/.config/google-chrome-canary/Default/shared_proto_db/000003.log 
+2026/06/04-21:40:18.331 97bfa Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/shared_proto_db/MANIFEST-000001
+2026/06/04-21:40:18.331 97bfa Recovering log #3
+2026/06/04-21:40:18.355 97bfa Reusing old log /home/michael/.config/google-chrome-canary/Default/shared_proto_db/000003.log 
+2026/06/06-06:33:45.808 97bf6 Level-0 table #5: started
+2026/06/06-06:33:45.859 97bf6 Level-0 table #5: 117518 bytes OK
+2026/06/06-06:33:45.872 97bf6 Delete type=0 #3

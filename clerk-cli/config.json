@@ -1,0 +1,18 @@
+{
+  "profiles": {
+    "github.com/hurleyus/uncap.us": {
+      "workspaceId": "",
+      "appId": "app_391JV526iTmnxl0GHUURLVHMYDY",
+      "appName": "uncap.us",
+      "instances": {
+        "development": "ins_391JV78nmFA3rDpz565hyH4C3Am",
+        "production": "ins_3DMja0nEl9gLWbj4dpzC35F1F5d"
+      }
+    }
+  },
+  "auth": {
+    "production": {
+      "userId": "user_2hpJjxWL1FDnFK7N5zdGWqO5w4z"
+    }
+  }
+}

@@ -1,15 +1,60 @@
-2026/06/04-10:15:14.653 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Session Storage/MANIFEST-000001
-2026/06/04-10:15:14.665 5 Recovering log #14
-2026/06/04-10:15:14.666 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Session Storage/000014.log 
-2026/06/04-11:03:25.548 5 Level-0 table #18: started
-2026/06/04-11:03:25.555 5 Level-0 table #18: 16266 bytes OK
-2026/06/04-11:03:25.558 5 Delete type=0 #14
-2026/06/04-11:03:25.564 7 Compacting 4@0 + 1@1 files
-2026/06/04-11:03:25.572 7 Generated table #19@0: 855 keys, 32495 bytes
-2026/06/04-11:03:25.572 7 Compacted 4@0 + 1@1 files => 32495 bytes
-2026/06/04-11:03:25.574 7 compacted to: files[ 0 1 1 0 0 0 0 ]
-2026/06/04-11:03:25.575 7 Delete type=2 #8
-2026/06/04-11:03:25.575 7 Delete type=2 #10
-2026/06/04-11:03:25.575 7 Delete type=2 #13
-2026/06/04-11:03:25.575 7 Delete type=2 #15
-2026/06/04-11:03:25.575 7 Delete type=2 #18
+2026/06/04-21:40:18.192 5 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Session Storage/MANIFEST-000001
+2026/06/04-21:40:18.195 5 Recovering log #23
+2026/06/04-21:40:18.213 5 Reusing old log /home/michael/.config/google-chrome-canary/Default/Session Storage/000023.log 
+2026/06/04-23:09:17.791 7 Level-0 table #27: started
+2026/06/04-23:09:17.799 7 Level-0 table #27: 35791 bytes OK
+2026/06/04-23:09:17.802 7 Delete type=0 #23
+2026/06/04-23:32:24.783 5 Level-0 table #29: started
+2026/06/04-23:32:24.818 5 Level-0 table #29: 819926 bytes OK
+2026/06/04-23:32:24.855 5 Delete type=0 #26
+2026/06/04-23:32:24.856 5 Compacting 4@0 + 1@1 files
+2026/06/04-23:32:24.877 5 Generated table #30@0: 1314 keys, 870854 bytes
+2026/06/04-23:32:24.877 5 Compacted 4@0 + 1@1 files => 870854 bytes
+2026/06/04-23:32:24.879 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/04-23:32:24.880 5 Delete type=2 #19
+2026/06/04-23:32:24.880 5 Delete type=2 #22
+2026/06/04-23:32:24.880 5 Delete type=2 #24
+2026/06/04-23:32:24.881 5 Delete type=2 #27
+2026/06/04-23:32:24.881 5 Delete type=2 #29
+2026/06/05-05:32:24.789 7 Level-0 table #32: started
+2026/06/05-05:32:24.833 7 Level-0 table #32: 30524 bytes OK
+2026/06/05-05:32:24.844 7 Delete type=0 #28
+2026/06/05-07:22:24.787 7 Level-0 table #34: started
+2026/06/05-07:22:24.791 7 Level-0 table #34: 26940 bytes OK
+2026/06/05-07:22:24.801 7 Delete type=0 #31
+2026/06/05-12:32:24.784 5 Level-0 table #36: started
+2026/06/05-12:32:24.820 5 Level-0 table #36: 29787 bytes OK
+2026/06/05-12:32:24.826 5 Delete type=0 #33
+2026/06/05-19:57:28.674 5 Level-0 table #38: started
+2026/06/05-19:57:28.711 5 Level-0 table #38: 19026 bytes OK
+2026/06/05-19:57:28.715 5 Delete type=0 #35
+2026/06/05-19:57:28.717 5 Compacting 4@0 + 1@1 files
+2026/06/05-19:57:28.751 5 Generated table #39@0: 1570 keys, 882580 bytes
+2026/06/05-19:57:28.751 5 Compacted 4@0 + 1@1 files => 882580 bytes
+2026/06/05-19:57:28.753 5 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/05-19:57:28.754 5 Delete type=2 #30
+2026/06/05-19:57:28.754 5 Delete type=2 #32
+2026/06/05-19:57:28.754 5 Delete type=2 #34
+2026/06/05-19:57:28.754 5 Delete type=2 #36
+2026/06/05-19:57:28.754 5 Delete type=2 #38
+2026/06/06-05:30:52.366 7 Level-0 table #41: started
+2026/06/06-05:30:52.372 7 Level-0 table #41: 26181 bytes OK
+2026/06/06-05:30:52.376 7 Delete type=0 #37
+2026/06/06-05:31:47.945 5 Level-0 table #43: started
+2026/06/06-05:31:48.000 5 Level-0 table #43: 807214 bytes OK
+2026/06/06-05:31:48.011 5 Delete type=0 #40
+2026/06/06-06:05:48.090 5 Level-0 table #45: started
+2026/06/06-06:05:48.098 5 Level-0 table #45: 20855 bytes OK
+2026/06/06-06:05:48.103 5 Delete type=0 #42
+2026/06/06-21:28:28.527 7 Level-0 table #47: started
+2026/06/06-21:28:28.530 7 Level-0 table #47: 16213 bytes OK
+2026/06/06-21:28:28.566 7 Delete type=0 #44
+2026/06/06-21:28:28.567 7 Compacting 4@0 + 1@1 files
+2026/06/06-21:28:28.615 7 Generated table #48@0: 2094 keys, 886135 bytes
+2026/06/06-21:28:28.615 7 Compacted 4@0 + 1@1 files => 886135 bytes
+2026/06/06-21:28:28.616 7 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/06-21:28:28.617 7 Delete type=2 #39
+2026/06/06-21:28:28.617 7 Delete type=2 #41
+2026/06/06-21:28:28.617 7 Delete type=2 #43
+2026/06/06-21:28:28.618 7 Delete type=2 #45
+2026/06/06-21:28:28.618 7 Delete type=2 #47

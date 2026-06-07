@@ -1,2 +1,3 @@
-2026/05/31-10:12:08.798 a21a Creating DB /home/michael/.config/google-chrome-canary/Default/Extension Scripts since it was missing.
-2026/05/31-10:12:08.809 a21a Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Extension Scripts/MANIFEST-000001
+2026/05/31-10:23:05.731 ace9 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Extension Scripts/MANIFEST-000001
+2026/05/31-10:23:05.733 ace9 Recovering log #3
+2026/05/31-10:23:05.734 ace9 Reusing old log /home/michael/.config/google-chrome-canary/Default/Extension Scripts/000003.log 

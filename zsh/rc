@@ -67,6 +67,7 @@ fi
 
 # Cursor
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.vite-plus/bin:$PATH"
 source "$HOME/.config/zsh/tokens"
 
 # Node.js config

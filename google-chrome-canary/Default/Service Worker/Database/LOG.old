@@ -1,3 +1,6 @@
-2026/06/04-10:15:14.454 286f08 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Service Worker/Database/MANIFEST-000001
-2026/06/04-10:15:14.455 286f08 Recovering log #3
-2026/06/04-10:15:14.466 286f08 Reusing old log /home/michael/.config/google-chrome-canary/Default/Service Worker/Database/000003.log 
+2026/06/04-21:40:17.909 97c0d Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Service Worker/Database/MANIFEST-000001
+2026/06/04-21:40:17.930 97c0d Recovering log #3
+2026/06/04-21:40:17.954 97c0d Reusing old log /home/michael/.config/google-chrome-canary/Default/Service Worker/Database/000003.log 
+2026/06/04-22:22:46.866 97bf6 Level-0 table #5: started
+2026/06/04-22:22:46.876 97bf6 Level-0 table #5: 108700 bytes OK
+2026/06/04-22:22:46.879 97bf6 Delete type=0 #3

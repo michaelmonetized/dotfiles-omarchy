@@ -1,3 +1,42 @@
-2026/06/04-10:15:14.446 286f04 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
-2026/06/04-10:15:14.447 286f04 Recovering log #22
-2026/06/04-10:15:14.449 286f04 Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000022.log 
+2026/06/04-21:40:17.904 97bf6 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/MANIFEST-000001
+2026/06/04-21:40:17.933 97bf6 Recovering log #34
+2026/06/04-21:40:17.950 97bf6 Reusing old log /home/michael/.config/google-chrome-canary/Default/Sync Data/LevelDB/000034.log 
+2026/06/04-22:45:39.316 97bf7 Level-0 table #38: started
+2026/06/04-22:45:39.322 97bf7 Level-0 table #38: 87403 bytes OK
+2026/06/04-22:45:39.324 97bf7 Delete type=0 #34
+2026/06/05-00:07:28.782 97bf9 Level-0 table #40: started
+2026/06/05-00:07:28.947 97bf9 Level-0 table #40: 168442 bytes OK
+2026/06/05-00:07:29.019 97bf9 Delete type=0 #37
+2026/06/05-00:07:29.047 97bf9 Compacting 4@0 + 1@1 files
+2026/06/05-00:07:29.239 97bf9 Generated table #41@0: 140 keys, 24230 bytes
+2026/06/05-00:07:29.241 97bf9 Compacted 4@0 + 1@1 files => 24230 bytes
+2026/06/05-00:07:29.262 97bf9 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/05-00:07:29.264 97bf9 Delete type=2 #31
+2026/06/05-00:07:29.268 97bf9 Delete type=2 #33
+2026/06/05-00:07:29.268 97bf9 Delete type=2 #35
+2026/06/05-00:07:29.269 97bf9 Delete type=2 #38
+2026/06/05-00:07:29.269 97bf9 Delete type=2 #40
+2026/06/06-05:31:49.226 97bf6 Level-0 table #43: started
+2026/06/06-05:31:49.238 97bf6 Level-0 table #43: 128452 bytes OK
+2026/06/06-05:31:49.274 97bf6 Delete type=0 #39
+2026/06/06-05:54:16.420 97bf7 Level-0 table #45: started
+2026/06/06-05:54:16.432 97bf7 Level-0 table #45: 156544 bytes OK
+2026/06/06-05:54:16.435 97bf7 Delete type=0 #42
+2026/06/06-05:59:02.849 97bf9 Level-0 table #47: started
+2026/06/06-05:59:02.862 97bf9 Level-0 table #47: 104695 bytes OK
+2026/06/06-05:59:02.897 97bf9 Delete type=0 #44
+2026/06/06-06:09:33.544 97bf6 Level-0 table #49: started
+2026/06/06-06:09:33.551 97bf6 Level-0 table #49: 114250 bytes OK
+2026/06/06-06:09:33.587 97bf6 Delete type=0 #46
+2026/06/06-06:09:33.587 97bf6 Compacting 4@0 + 1@1 files
+2026/06/06-06:09:33.596 97bf6 Generated table #50@0: 159 keys, 29550 bytes
+2026/06/06-06:09:33.596 97bf6 Compacted 4@0 + 1@1 files => 29550 bytes
+2026/06/06-06:09:33.598 97bf6 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/06-06:09:33.598 97bf6 Delete type=2 #41
+2026/06/06-06:09:33.599 97bf6 Delete type=2 #43
+2026/06/06-06:09:33.599 97bf6 Delete type=2 #45
+2026/06/06-06:09:33.599 97bf6 Delete type=2 #47
+2026/06/06-06:09:33.599 97bf6 Delete type=2 #49
+2026/06/07-05:46:43.599 97bf6 Level-0 table #52: started
+2026/06/07-05:46:43.630 97bf6 Level-0 table #52: 110707 bytes OK
+2026/06/07-05:46:43.638 97bf6 Delete type=0 #48

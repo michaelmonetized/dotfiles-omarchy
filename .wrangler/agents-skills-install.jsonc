@@ -1,0 +1,43 @@
+{
+	"version": 1,
+	"accepted": true,
+	"date": "2026-06-05T03:08:55.786Z",
+	"detectedAgents": [
+		{
+			"name": "Claude Code",
+			"rosie": {
+				"id": "claude",
+				"globalPath": "/home/michael/.claude/skills"
+			}
+		},
+		{
+			"name": "OpenCode",
+			"rosie": {
+				"id": "opencode",
+				"globalPath": "/home/michael/.config/opencode/skills"
+			}
+		},
+		{
+			"name": "Codex",
+			"rosie": {
+				"id": "codex",
+				"globalPath": "/home/michael/.codex/skills"
+			}
+		},
+		{
+			"name": "Gemini CLI",
+			"rosie": {
+				"id": "gemini-cli",
+				"globalPath": "/home/michael/.gemini/skills"
+			}
+		},
+		{
+			"name": "Pi",
+			"rosie": {
+				"id": "pi",
+				"globalPath": "/home/michael/.pi/agent/skills"
+			}
+		}
+	],
+	"installFailed": false
+}

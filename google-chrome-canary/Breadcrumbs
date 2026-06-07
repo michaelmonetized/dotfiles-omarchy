@@ -1,58 +1,76 @@
-6:09:00 Tab21 StartNav1300 #renderer-script #auto_subframe
-6:09:03 Tab21 FinishNav1300 ERR_ABORTED
-6:09:04 Tab21 StartNav1301 #renderer-script #auto_subframe
-6:09:04 Tab21 FinishNav1301
-6:09:04 Tab21 PageLoad
-6:09:07 Tab21 PageLoad #google
-6:09:15 Tab21 StartNav1302 #renderer-script #auto_subframe
-6:09:15 Tab21 FinishNav1302
-6:09:15 Tab21 PageLoad
-6:09:16 Tab21 StartNav1303 #renderer-script #auto_subframe
-6:09:16 Tab21 FinishNav1303
-6:09:16 Tab21 PageLoad
-6:09:58 Tab21 StartNav1304 #renderer-user #link
-6:09:58 Tab21 FinishNav1304
-6:09:58 UserEducation.MessageNotShown
-6:09:58 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-6:09:58 UserEducation.MessageNotShown.FeatureDisabled
-6:10:05 Tab21 StartNav1305 #renderer-user #link
-6:10:05 Tab21 FinishNav1305
-6:10:05 UserEducation.MessageNotShown
-6:10:05 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-6:10:05 UserEducation.MessageNotShown.FeatureDisabled
-6:10:19 Tab21 StartNav1306 #renderer-user #link
-6:10:19 Tab21 FinishNav1306
-6:10:19 UserEducation.MessageNotShown
-6:10:19 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-6:10:19 UserEducation.MessageNotShown.FeatureDisabled
-6:10:22 Tab21 StartNav1307 #renderer-user #auto_subframe
-6:10:22 Tab21 FinishNav1307
-6:10:23 Tab21 StartNav1308 #renderer-user #auto_subframe
-6:10:23 Tab21 FinishNav1308
-6:10:24 Tab21 StartNav1309 #renderer-script #auto_subframe
-6:10:25 Tab21 FinishNav1309
-6:10:27 Tab21 StartNav1310 #renderer-user #link
-6:10:27 Tab21 FinishNav1310
-6:10:27 UserEducation.MessageNotShown
-6:10:27 UserEducation.MessageNotShown.IPH_ExtensionsMenu
-6:10:27 UserEducation.MessageNotShown.FeatureDisabled
-6:10:36 Tab21 PageLoad
-6:10:36 Tab21 PageLoad
-6:10:42 Tab21 PageLoad
-6:10:43 Widget Closed: StatusBubble
-6:12:13 Tab23 StartNav1311 #google #renderer-script #auto_subframe
-6:12:13 Tab23 StartNav1312 #renderer-script #auto_subframe
-6:12:13 Tab23 FinishNav1312
-6:12:13 Tab23 PageLoad
-6:12:13 Tab23 FinishNav1311
-6:12:21 Tab23 PageLoad #google
-6:12:25 Tab23 StartNav1313 #renderer-script #auto_subframe
-6:12:25 Tab23 FinishNav1313
-6:12:25 Tab23 PageLoad
-6:12:25 Tab23 StartNav1314 #renderer-script #auto_subframe
-6:12:25 Tab23 FinishNav1314
-6:12:25 Tab23 PageLoad
-6:14:03 Browser1 Closed 5 tabs
-6:14:05 Widget Closed: BrowserWidget
-6:14:05 Widget Closed: RoundedOmniboxResultsFrameWindow
-6:14:08 Shutdown
+57:52:44 Tab70 StartNav2456 #renderer-script #link
+57:52:45 Tab70 FinishNav2456 ERR_ABORTED
+57:52:45 Tab70 StartNav2457 #renderer-script #link
+57:52:47 Tab70 FinishNav2457
+57:52:47 UserEducation.MessageNotShown
+57:52:47 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+57:52:47 UserEducation.MessageNotShown.FeatureDisabled
+57:52:49 Tab70 PageLoad
+57:53:56 CloseTabByKey
+57:53:56 CloseTab_Accelerator
+57:53:56 Browser1 Close Tab70 at 1
+57:53:56 UserEducation.MessageNotShown
+57:53:56 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+57:53:56 UserEducation.MessageNotShown.FeatureDisabled
+57:53:57 Media.Shown
+57:54:09 Widget Closed: StatusBubble
+0:00:00 Startup
+0:00:00 Themes.Loaded
+0:00:00 UserEducation.Session.ActivePeriodStart
+0:00:00 Tab1 StartNav3 #ntp #auto_toplevel
+0:00:00 Browser1 Insert active Tab1 at 0
+0:00:00 Tab1 FinishNav3
+0:00:00 Tab1 StartNav4 #renderer-script #auto_subframe
+0:00:00 Tab1 FinishNav4
+0:00:00 Tab1 PageLoad
+0:00:01 Tab1 PageLoad #ntp
+0:00:01 Tab1 StartNav5 #renderer-script #auto_subframe
+0:00:01 Tab1 FinishNav5
+0:00:02 Tab1 PageLoad
+0:00:06 Tab1 StartNav8 #renderer-script #auto_subframe
+0:00:06 Tab1 StartNav9 #auto_bookmark
+0:00:06 ClickedBookmarkBarURLButton
+0:00:06 Tab1 FinishNav8 ERR_ABORTED
+0:00:06 Tab1 FinishNav9
+0:00:06 Bookmarks.Opened
+0:00:06 Bookmarks.Opened.LocalStorageSyncing
+0:00:06 UserEducation.MessageNotShown
+0:00:06 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:06 UserEducation.MessageNotShown.FeatureDisabled
+0:00:06 Tab1 StartNav10 #renderer-script #link
+0:00:06 Tab1 FinishNav10
+0:00:06 UserEducation.MessageNotShown
+0:00:06 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:06 UserEducation.MessageNotShown.FeatureDisabled
+0:00:07 Tab1 StartNav11 #renderer-script #auto_subframe
+0:00:08 Tab1 FinishNav11
+0:00:09 Tab1 PageLoad
+0:00:10 Widget Closed: BubbleDialogModelHostContentsView
+0:00:10 Tab1 PageLoad
+0:00:12 ZoomNormal
+0:00:14 Widget Closed: ZoomBubbleView
+0:00:15 Tab1 StartNav13 #renderer-user #link
+0:00:15 Tab1 FinishNav13
+0:00:15 UserEducation.MessageNotShown
+0:00:15 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:15 UserEducation.MessageNotShown.FeatureDisabled
+0:00:24 Tab1 StartNav14 #renderer-user #link
+0:00:24 Tab1 FinishNav14
+0:00:24 UserEducation.MessageNotShown
+0:00:24 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:24 UserEducation.MessageNotShown.FeatureDisabled
+0:00:43 Tab1 StartNav15 #renderer-user #link
+0:00:43 Tab1 FinishNav15
+0:00:43 UserEducation.MessageNotShown
+0:00:43 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:43 UserEducation.MessageNotShown.FeatureDisabled
+0:00:45 Tab1 StartNav16 #renderer-user #link
+0:00:45 Tab1 FinishNav16
+0:00:45 UserEducation.MessageNotShown
+0:00:45 UserEducation.MessageNotShown.IPH_ExtensionsMenu
+0:00:45 UserEducation.MessageNotShown.FeatureDisabled
+0:00:52 Widget Closed: StatusBubble
+0:01:39 Widget Closed: StatusBubble
+0:10:00 UserEducation.MessageNotShown
+0:10:00 UserEducation.MessageNotShown.IPH_VerticalTabsExpandOnHoverFeature
+0:10:00 UserEducation.MessageNotShown.FeatureDisabled

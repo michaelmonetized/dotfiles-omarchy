@@ -1,3 +1,15 @@
-2026/06/03-21:35:34.616 4ebba Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/WebStorage/20/IndexedDB/indexeddb.leveldb/MANIFEST-000001
-2026/06/03-21:35:34.617 4ebba Recovering log #4
-2026/06/03-21:35:34.619 4ebba Reusing old log /home/michael/.config/google-chrome-canary/Default/WebStorage/20/IndexedDB/indexeddb.leveldb/000004.log 
+2026/06/06-04:57:42.312 97bf9 Reusing MANIFEST /home/michael/.config/google-chrome-canary/Default/WebStorage/20/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/06/06-04:57:42.313 97bf9 Recovering log #4
+2026/06/06-04:57:42.315 97bf9 Reusing old log /home/michael/.config/google-chrome-canary/Default/WebStorage/20/IndexedDB/indexeddb.leveldb/000004.log 
+2026/06/06-05:13:04.358 97bf7 Level-0 table #8: started
+2026/06/06-05:13:04.393 97bf7 Level-0 table #8: 114441 bytes OK
+2026/06/06-05:13:04.396 97bf7 Delete type=0 #4
+2026/06/06-05:13:04.396 97bf7 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2026/06/06-05:13:04.397 97bf7 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00p\x04\x80;\xe9yB\x00\x03\x00\x00\x00\x00\x00\x00<@' @ 947 : 1
+2026/06/06-05:13:04.397 97bf7 Compacting 1@1 + 1@2 files
+2026/06/06-05:13:04.399 97bf7 Generated table #9@1: 57 keys, 8266 bytes
+2026/06/06-05:13:04.399 97bf7 Compacted 1@1 + 1@2 files => 8266 bytes
+2026/06/06-05:13:04.401 97bf7 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/06/06-05:13:04.401 97bf7 Delete type=2 #5
+2026/06/06-05:13:04.401 97bf7 Delete type=2 #8
+2026/06/06-05:13:04.402 97bf7 Manual compaction at level-1 from '\x00\x02\x01\x1f\x04\x03\x01\x06\x00Q\x00U\x00E\x00U\x00E\x00D\x03\x00\x00\x00\x00\x00\x00L@\x03\x00p\x04\x80;\xe9yB\x00\x03\x00\x00\x00\x00\x00\x00<@' @ 947 : 1 .. (end); will stop at (end)

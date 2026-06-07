@@ -1,0 +1,22 @@
+
+--- 2026-06-06T09:23:15.012Z debug
+🪵  Writing logs to "/home/michael/.config/.wrangler/logs/wrangler-2026-06-06_09-23-14_422.log"
+---
+
+--- 2026-06-06T09:23:15.012Z log
+
+---
+
+--- 2026-06-06T09:23:15.176Z error
+✘ [ERROR] Unknown argument: list
+
+
+---
+
+--- 2026-06-06T09:23:15.259Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command started","timestamp":1780737795258,"properties":{"amplitude_session_id":1780737794998,"amplitude_event_id":0,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"","sanitizedArgs":{},"currentAgentSkillsInstalled":null}}
+---
+
+--- 2026-06-06T09:23:15.290Z debug
+Metrics dispatcher: Posting data {"deviceId":"75f672de-8f33-4c06-8e78-2d26fc318570","event":"wrangler command errored","timestamp":1780737795290,"properties":{"amplitude_session_id":1780737794998,"amplitude_event_id":1,"wranglerVersion":"4.98.0","wranglerMajorVersion":4,"wranglerMinorVersion":98,"wranglerPatchVersion":0,"osPlatform":"Linux","osVersion":"#1 SMP PREEMPT_DYNAMIC Fri, 22 May 2026 19:25:09 +0000","nodeVersion":26,"isFirstUsage":false,"configFileType":"none","isCI":false,"isPagesCI":false,"isWorkersCI":false,"isInteractive":false,"hasAssets":false,"agent":null,"argsUsed":[],"argsCombination":"","sanitizedCommand":"","sanitizedArgs":{},"durationMs":23,"errorType":"CommandLineArgsError","errorMessage":"yargs validation error","currentAgentSkillsInstalled":null}}
+---
