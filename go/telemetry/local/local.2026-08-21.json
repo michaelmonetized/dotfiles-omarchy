@@ -1,0 +1,29 @@
+{
+ "Week": "2026-08-21",
+ "LastWeek": "",
+ "X": 0.49183054959995,
+ "Programs": [
+  {
+   "Program": "cmd/go",
+   "Version": "devel",
+   "GoVersion": "devel",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "go/cgo:enabled": 75,
+    "go/goexperiment:nodwarf5": 75,
+    "go/goroot:usr-lib-go": 75,
+    "go/invocations": 75,
+    "go/mode:module": 75,
+    "go/platform/host/linux/major-version:7": 75,
+    "go/platform/host/linux/version:7-0": 75,
+    "go/platform/target/goamd64:v1": 75,
+    "go/platform/target/goarch:amd64": 75,
+    "go/platform/target/goos:linux": 75,
+    "go/subcommand:env": 75
+   },
+   "Stacks": {}
+  }
+ ],
+ "Config": "v0.0.0-0"
+}

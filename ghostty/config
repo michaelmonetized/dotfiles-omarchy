@@ -1,3 +1,5 @@
+keybind = ctrl+enter=unbind
+
 theme = dark:catpuccin-mocha,light:catpuccin-latte
 font-family = "NotoSansM Nerd Font Mono"
 font-size = 9
@@ -5,3 +7,9 @@ title = ""
 window-padding-x = 8
 window-padding-y = 8
 initial-command = "/bin/zsh -1 -c ~/.config/tmux-start.sh; exec zsh"
+
+# Send Shift+Enter as CSI-u so TUIs can distinguish it from Enter.
+keybind = shift+enter=csi:13;2u
+
+# Legacy encoding sends Alt+Shift+Enter the same as Alt+Enter; send CSI-u so tmux can match M-S-Enter.
+keybind = alt+shift+enter=csi:13;4u

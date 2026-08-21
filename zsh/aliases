@@ -10,6 +10,7 @@ alias cld="claude --dangerously-skip-permissions"
 alias i='sudo pacman -Syy "$@" --noconfirm --overwrite "*"'
 alias s='sudo pacman -Ssyy "$@"'
 alias gmd="gemini -y"
+alias gx="agy --dangerously-skip-permissions"
 alias np="~/bin/newproject" #pops an fzf menu with options ( hustlestack,  swift,  cli,  hustlestack-web-native-monorepo)
 alias npr='~/bin/stack "$@"'
 alias ni='gh issue create "$@"'
