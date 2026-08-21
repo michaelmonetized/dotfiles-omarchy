@@ -2,53 +2,69 @@ local selection_layers = 0
 local selection_binds = {}
 
 for workspace = 1, 10 do
-  local key = "code:" .. tostring(workspace + 9)
-  hl.unbind("SUPER + " .. key, "Switch to workspace " .. workspace, hl.dsp.focus({ workspace = tostring(workspace) }))
-  hl.unbind("SUPER + SHIFT + " .. key, "Move window to workspace " .. workspace, hl.dsp.window.move({ workspace = tostring(workspace) }))
-  hl.unbind("SUPER + SHIFT + ALT + " .. key, "Move window silently to workspace " .. workspace, hl.dsp.window.move({ workspace = tostring(workspace), follow = false }))
+	local key = "code:" .. tostring(workspace + 9)
+	hl.unbind("SUPER + " .. key)
+	hl.unbind("SUPER + SHIFT + ")
+	hl.unbind("SUPER + SHIFT + ALT + " .. key)
 end
 
 for index = 1, 5 do
-  hl.unbind("SUPER + ALT + code:" .. tostring(index + 9), "Switch to group window " .. index, hl.dsp.group.active({ index = index }))
+	hl.unbind("SUPER + ALT + code:" .. tostring(index + 9))
 end
 
 hl.on("layer.opened", function(layer)
-  if layer.namespace == "selection" then
-    selection_layers = selection_layers + 1
-    if selection_layers == 1 then
-      selection_binds = {
-        hl.unbind("RETURN"),
-        hl.unbind("CTRL + RETURN"),
-        hl.unbind("CTRL + TAB"),
+	if layer.namespace == "selection" then
+		selection_layers = selection_layers + 1
+		if selection_layers == 1 then
+			selection_binds = {
+				hl.unbind("RETURN"),
+				hl.unbind("CTRL + RETURN"),
+				hl.unbind("CTRL + TAB"),
 
-        hl.bind("SPACE", hl.dsp.exec_cmd("omarchy-capture-region --take-window"), { description = "Capture highlighted window" }),
-        hl.bind("RETURN", hl.dsp.exec_cmd("omarchy-capture-region --take-fullscreen"), { description = "Capture entire screen" }),
-        hl.bind("SHIFT + TAB", hl.dsp.exec_cmd("omarchy-capture-region --select-window prev"), { description = "Select previous window to capture" }),
-      }
+				hl.bind(
+					"SPACE",
+					hl.dsp.exec_cmd("omarchy-capture-region --take-window"),
+					{ description = "Capture highlighted window" }
+				),
+				hl.bind(
+					"RETURN",
+					hl.dsp.exec_cmd("omarchy-capture-region --take-fullscreen"),
+					{ description = "Capture entire screen" }
+				),
+				hl.bind(
+					"SHIFT + TAB",
+					hl.dsp.exec_cmd("omarchy-capture-region --select-window prev"),
+					{ description = "Select previous window to capture" }
+				),
+			}
 
-      local dir_to_key = { left = "H", right = "L", up = "K", down = "J" }
+			local dir_to_key = { left = "H", right = "L", up = "K", down = "J" }
 
-      for _, direction in ipairs({ "left", "right", "up", "down" }) do
-        table.insert(
-          selection_binds,
-          hl.unbind(direction:upper()),
-          hl.bind(dir_to_key[direction], hl.dsp.exec_cmd("omarchy-capture-region --select-window " .. direction), { description = "Select window to capture" })
-        )
-      end
-    end
-  end
+			for _, direction in ipairs({ "left", "right", "up", "down" }) do
+				table.insert(
+					selection_binds,
+					hl.unbind(direction:upper()),
+					hl.bind(
+						dir_to_key[direction],
+						hl.dsp.exec_cmd("omarchy-capture-region --select-window " .. direction),
+						{ description = "Select window to capture" }
+					)
+				)
+			end
+		end
+	end
 end)
 
 hl.on("layer.closed", function(layer)
-  if layer.namespace == "selection" and selection_layers > 0 then
-    selection_layers = selection_layers - 1
-    if selection_layers == 0 then
-      for _, keybind in ipairs(selection_binds) do
-        keybind:unbind()
-      end
-      selection_binds = {}
-    end
-  end
+	if layer.namespace == "selection" and selection_layers > 0 then
+		selection_layers = selection_layers - 1
+		if selection_layers == 0 then
+			for _, keybind in ipairs(selection_binds) do
+				keybind:unbind()
+			end
+			selection_binds = {}
+		end
+	end
 end)
 
 hl.unbind("ALT + PRINT")
@@ -208,36 +224,44 @@ o.bind("ALT + S", "Switch to stream workspace", hl.dsp.focus({ workspace = "9" }
 o.bind("ALT + P", "Switch to play workspace", hl.dsp.focus({ workspace = "10" }))
 
 local ws_to_key = {
-  "G",
-  "Z",
-  "A",
-  "C",
-  "M",
-  "D",
-  "W",
-  "E",
-  "S",
-  "P"
+	"G",
+	"Z",
+	"A",
+	"C",
+	"M",
+	"D",
+	"W",
+	"E",
+	"S",
+	"P",
 }
 
 local ws_to_name = {
-  "terminal",
-  "browser",
-  "agents",
-  "comms",
-  "money",
-  "design",
-  "work",
-  "entertain",
-  "stream",
-  "play"
+	"terminal",
+	"browser",
+	"agents",
+	"comms",
+	"money",
+	"design",
+	"work",
+	"entertain",
+	"stream",
+	"play",
 }
 
 for workspace = 1, 10 do
-  local key = ws_to_key[workspace]
-  local name = ws_to_name[workspace]
-  o.bind("SUPER + ALT + " .. key, "Move window to " .. name .. " space", hl.dsp.window.move({ workspace = tostring(workspace) }))
-  o.bind("SUPER + SHIFT + ALT + " ..key, "Silently move window to " .. name .. " space", hl.dsp.window.move({ workspace = tostring(workspace), follow = false }))
+	local key = ws_to_key[workspace]
+	local name = ws_to_name[workspace]
+	o.bind(
+		"SUPER + ALT + " .. key,
+		"Move window to " .. name .. " space",
+		hl.dsp.window.move({ workspace = tostring(workspace) })
+	)
+	o.bind(
+		"SUPER + SHIFT + ALT + " .. key,
+		"Silently move window to " .. name .. " space",
+		hl.dsp.window.move({ workspace = tostring(workspace), follow = false })
+	)
 end
 
 o.bind("ALT + B", "Browser", { omarchy = "browser" })
@@ -270,4 +294,3 @@ o.bind("ALT + TAB", "Next window", hl.dsp.window.cycle_next())
 -- Physical Left Control is Hyper via keyd: Super+Ctrl+Alt+Shift.
 local hyper = "SUPER + CTRL + ALT + SHIFT"
 o.bind(hyper .. " + D", "Toggle dictation", "voxtype record toggle")
-
