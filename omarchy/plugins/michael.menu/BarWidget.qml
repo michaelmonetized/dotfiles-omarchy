@@ -1,9 +1,20 @@
 import QtQuick
+import Quickshell
 import qs.Ui
 
 BarWidget {
   id: root
   moduleName: "omarchy.menu"
+
+  property string hostname: ""
+
+  FileView {
+    id: hostnameFile
+    path: "/etc/hostname"
+    watchChanges: false
+    printErrors: false
+    onLoaded: root.hostname = String(text() || "").trim()
+  }
 
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
@@ -12,7 +23,7 @@ BarWidget {
     id: button
     anchors.fill: parent
     bar: root.bar
-    text: root.setting("label", "󱁏 hpeliteclient")
+    text: root.setting("label", "󱁏 " + root.hostname)
     horizontalMargin: 12
     onPressed: function(button) {
       if (!root.bar) return

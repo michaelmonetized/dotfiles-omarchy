@@ -1,98 +1,106 @@
 {
-  "version": 1,
-  "idle": {
-    "screensaver": 150,
-    "lock": 300
-  },
   "bar": {
-    "id": "michael.bar",
-    "position": "top",
-    "transparent": true,
     "centerAnchor": "",
+    "id": "michael.bar",
     "layout": {
+      "center": [],
       "left": [
         {
-          "id": "michael.menu",
-          "label": "󱁏 hpeliteclient",
           "chipColor": "#89b4fa",
+          "chipJoin": "",
           "chipRadius": "left",
-          "chipJoin": ""
+          "id": "michael.menu"
         },
         {
-          "id": "michael.workspaces",
           "chipColor": "#f38ba8",
+          "chipJoin": "",
           "chipLead": "",
-          "chipJoin": ""
+          "id": "michael.workspaces"
         }
       ],
-      "center": [],
       "right": [
         {
-          "id": "omarchy.tray",
           "chipColor": "#cdd6f4",
-          "chipLead": ""
+          "chipLead": "",
+          "id": "omarchy.tray"
         },
         {
-          "id": "omarchy.system-update",
-          "chipColor": "#cdd6f4"
+          "chipColor": "#cdd6f4",
+          "id": "omarchy.system-update"
         },
         {
-          "id": "omarchy.indicators",
           "alwaysShow": true,
-          "items": ["Dictation", "ScreenRecording", "StayAwake", "Dnd"],
           "chipColor": "#cdd6f4",
-          "chipJoin": ""
+          "chipJoin": "",
+          "id": "omarchy.indicators",
+          "items": [
+            "Dictation",
+            "ScreenRecording",
+            "StayAwake",
+            "Dnd"
+          ]
         },
         {
-          "id": "omarchy.bluetooth",
           "chipColor": "#89b4fa",
-          "chipLead": ""
+          "chipLead": "",
+          "id": "omarchy.bluetooth"
         },
         {
-          "id": "omarchy.network",
-          "chipColor": "#89b4fa"
-        },
-        {
-          "id": "cpu",
-          "type": "command",
-          "text": "󰍛",
-          "tooltip": "CPU",
-          "onClick": "omarchy-launch-or-focus-tui btop",
-          "onRightClick": "xdg-terminal-exec",
           "chipColor": "#89b4fa",
+          "id": "omarchy.network"
+        },
+        {
+          "chipColor": "#89b4fa",
+          "id": "omarchy.monitor"
+        },
+        {
+          "chipColor": "#89b4fa",
+          "chipJoin": "",
           "fontSize": 14,
           "horizontalMargin": 10,
-          "chipJoin": ""
+          "id": "cpu",
+          "onClick": "omarchy-launch-or-focus-tui btop",
+          "onRightClick": "xdg-terminal-exec",
+          "text": "󰍛",
+          "tooltip": "CPU",
+          "type": "command"
         },
         {
-          "id": "omarchy.weather",
           "chipColor": "#b4befe",
+          "chipJoin": "",
           "chipLead": "",
-          "chipJoin": ""
+          "id": "omarchy.weather"
         },
         {
-          "id": "omarchy.audio",
           "chipColor": "#f9e2af",
+          "chipJoin": "",
           "chipLead": "",
-          "chipJoin": ""
+          "id": "omarchy.audio"
         },
         {
-          "id": "michael.clock",
+          "chipColor": "#a6e3a1",
+          "chipLead": "",
+          "chipRadius": "right",
           "format": "dddd yyyy-MM-dd HH:mm:ss",
           "formatAlt": "dddd HH:mm",
-          "verticalFormat": "HH\n—\nmm",
-          "chipColor": "#a6e3a1",
-          "chipRadius": "right",
-          "chipLead": ""
+          "id": "michael.clock",
+          "verticalFormat": "HH\n—\nmm"
         }
       ]
-    }
+    },
+    "position": "top",
+    "transparent": true
   },
-  "plugins": [],
+  "cloneSourceRestores": [
+    "michael.menu"
+  ],
   "disabledPlugins": [
     "omarchy.menu"
   ],
-  "cloneSourceRestores": [
-    "michael.menu"
-  ]
+  "idle": {
+    "lock": 300,
+    "screensaver": 150
+  },
+  "plugins": [],
+  "version": 1
 }
