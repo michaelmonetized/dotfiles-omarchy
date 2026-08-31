@@ -1,0 +1,527 @@
+# frozen_string_literal: true
+
+module Omaflow
+  class Validator
+    HHMM = /\A([01][0-9]|2[0-3]):[0-5][0-9]\z/
+    SLUG = /\A[a-z0-9][a-z0-9-]{0,40}\z/
+    SHORT_SLUG = /\A[a-z0-9][a-z0-9-]{0,30}\z/
+
+    TRIGGER_CHECKS = {
+      'manual' => :check_manual_trigger,
+      'time' => :check_time_trigger,
+      'interval' => :check_interval_trigger,
+      'lid-opened' => :check_lid_trigger,
+      'lid-closed' => :check_lid_trigger,
+      'monitor-connected' => :check_monitor_trigger,
+      'monitor-disconnected' => :check_monitor_trigger,
+      'app-opened' => :check_app_trigger,
+      'app-closed' => :check_app_trigger,
+      'wifi-connected' => :check_wifi_connected_trigger,
+      'wifi-disconnected' => :check_wifi_disconnected_trigger,
+      'power-source' => :check_power_trigger,
+      'file-created' => :check_file_trigger,
+      'folder-created' => :check_file_trigger,
+      'git-branch-changed' => :check_git_trigger,
+      'custom' => :check_custom_trigger
+    }.freeze
+
+    CONDITION_CHECKS = {
+      'time-between' => :check_time_between,
+      'weekday' => :check_weekday,
+      'on-power' => :check_on_power,
+      'lid-state' => :check_lid_state,
+      'monitor-present' => :check_monitor_present,
+      'app-running' => :check_app_running,
+      'on-branch' => :check_on_branch,
+      'hey-events' => :check_hey_events,
+      'on-ssid' => :check_on_ssid
+    }.freeze
+
+    ACTION_CHECKS = {
+      'theme' => :check_theme,
+      'dnd' => :check_state_action,
+      'nightlight' => :check_state_action,
+      'stay-awake' => :check_state_action,
+      'launch' => :check_launch,
+      'workspace' => :check_workspace,
+      'audio-output' => :check_audio_output,
+      'script' => :check_script,
+      'webhook' => :check_webhook,
+      'hey-timetrack' => :check_hey_timetrack,
+      'hey-agenda' => :check_hey_agenda,
+      'notify' => :check_notify,
+      'agent' => :check_agent
+    }.freeze
+
+    attr_reader :errors, :warnings
+
+    def self.validate_file(path)
+      rule = JSON.parse(Store.safe_read(path))
+      return [['not a JSON object'], []] unless rule.is_a?(Hash)
+
+      new(rule).validate
+    rescue StandardError
+      [['not a JSON object'], []]
+    end
+
+    MANUAL_UNTIL_ERROR = 'an until needs an event; to end manually, run omaflow disarm <id>'
+
+    def initialize(rule)
+      @rule = rule
+      @errors = []
+      @warnings = []
+    end
+
+    def validate(phase: :rule)
+      check_top_level
+      if phase == :rule
+        check_trigger
+        check_conditions
+        check_actions
+      end
+      check_until
+      check_while unless phase == :until
+      [errors, warnings]
+    end
+
+    private
+
+    def err(message) = errors << message
+    def warn(message) = warnings << message
+
+    def warn_missing_repo(repo)
+      return unless valid_path?(repo) && GitState.git_dir(repo).nil?
+
+      message = "no git repository at #{repo} (branch-based rules will fail until it exists)"
+      warn(message) unless warnings.include?(message)
+    end
+
+    def safe_str?(value, max: 200)
+      value.is_a?(String) && value.length.between?(1, max) &&
+        !value.match?(/[[:cntrl:]]/) && !value.start_with?('-')
+    end
+
+    def present_str?(value, max: 200) = safe_str?(value, max:) && !value.strip.empty?
+
+    def present_match?(match, fields)
+      return false unless match.is_a?(Hash)
+
+      values = fields.select { match.key?(it) }.map { match[it] }
+      !values.empty? && values.all? { present_str?(it) }
+    end
+
+    def integer_between?(value, range) = value.is_a?(Integer) && range.cover?(value)
+
+    def unknown_keys(object, allowed, label)
+      extra = object.keys - allowed
+      err("unknown field in #{label}: #{extra.join(', ')}") unless extra.empty?
+    end
+
+    def check_top_level
+      err('schemaVersion must be 1') unless @rule['schemaVersion'] == 1
+      err('id must be a lowercase slug') unless @rule['id'].is_a?(String) && @rule['id'].match?(SLUG)
+      err('name must be a plain string (max 80, no leading dash or control chars)') unless safe_str?(@rule['name'], max: 80)
+      err('enabled must be a boolean') unless [true, false].include?(@rule['enabled'])
+      err('trigger must be an object') unless @rule['trigger'].is_a?(Hash)
+      err('actions must be a non-empty array (max 10)') unless @rule['actions'].is_a?(Array) && @rule['actions'].size.between?(1, 10)
+      err('until must be an object') if @rule.key?('until') && !@rule['until'].is_a?(Hash)
+      err('while must be an array of 1..5 reactions') if @rule.key?('while') && !valid_while_list?(@rule['while'])
+      conditions = @rule.fetch('conditions', [])
+      err('conditions must be an array (max 5)') unless conditions.is_a?(Array) && conditions.size <= 5
+      cooldown = @rule.fetch('cooldownSeconds', 60)
+      err('cooldownSeconds must be an integer 0..86400') unless integer_between?(cooldown, 0..86_400)
+      source = @rule.fetch('source', '')
+      err('source must be a string (max 500)') unless source.is_a?(String) && source.length <= 500
+      extra = @rule.keys - Vocabulary::RULE_FIELDS
+      err("unknown top-level field: #{extra.join(', ')}") unless extra.empty?
+    end
+
+    def check_trigger
+      trigger = @rule['trigger']
+      return unless trigger.is_a?(Hash)
+
+      validate_trigger(trigger, label: '.trigger', manual: true)
+    end
+
+    def validate_trigger(trigger, label:, manual:)
+      @trigger_label = label
+
+      type = trigger['type'].to_s
+      return err('trigger.type is required') if type.empty?
+
+      check = TRIGGER_CHECKS[type]
+      return err("unknown trigger type: #{type}") unless check
+
+      if type == 'manual' && !manual
+        err(label.start_with?('.while') ? 'a while needs an event to react to' : MANUAL_UNTIL_ERROR)
+      end
+      send(check, trigger)
+    ensure
+      @trigger_label = nil
+    end
+
+    def trigger_label = @trigger_label || '.trigger'
+
+    def check_manual_trigger(trigger) = unknown_keys(trigger, %w[type], trigger_label)
+
+    def check_time_trigger(trigger)
+      err('time trigger needs at: "HH:MM"') unless trigger['at'].is_a?(String) && trigger['at'].match?(HHMM)
+      days = trigger.fetch('days', Vocabulary::WEEKDAYS)
+      err('time trigger days must be from mon..sun') unless days.is_a?(Array) && !days.empty? && (days - Vocabulary::WEEKDAYS).empty?
+      unknown_keys(trigger, %w[type at days], trigger_label)
+    end
+
+    def check_interval_trigger(trigger)
+      err('interval trigger needs minutes as an integer 1..1440') unless integer_between?(trigger['minutes'], 1..1440)
+      unknown_keys(trigger, %w[type minutes], trigger_label)
+    end
+
+    def check_lid_trigger(trigger)
+      unknown_keys(trigger, %w[type], trigger_label)
+      warn_lid_unavailable
+    end
+
+    def check_monitor_trigger(trigger)
+      match = trigger['match']
+      valid = present_match?(match, %w[description name])
+      err("#{trigger['type']} needs match.description or match.name as a plain string") unless valid
+      unknown_keys(trigger, %w[type match], trigger_label)
+      unknown_keys(match, %w[description name], "#{trigger_label}.match") if match.is_a?(Hash)
+    end
+
+    def check_app_trigger(trigger)
+      match = trigger['match']
+      valid = present_match?(match, %w[class title])
+      err("#{trigger['type']} needs match.class or match.title as a plain string") unless valid
+      unknown_keys(trigger, %w[type match], trigger_label)
+      unknown_keys(match, %w[class title], "#{trigger_label}.match") if match.is_a?(Hash)
+    end
+
+    def check_wifi_connected_trigger(trigger)
+      match = trigger['match']
+      valid = match.is_a?(Hash) && (match['ssid'] == '*' || safe_str?(match['ssid']) || match['known'] == false)
+      valid &&= match['ssid'] == '*' || safe_str?(match['ssid']) if match.is_a?(Hash) && match.key?('ssid')
+      err('wifi-connected needs match.ssid ("*" for any) or match.known: false') unless valid
+      unknown_keys(trigger, %w[type match], trigger_label)
+      unknown_keys(match, %w[ssid known], "#{trigger_label}.match") if match.is_a?(Hash)
+    end
+
+    def check_wifi_disconnected_trigger(trigger)
+      match = trigger['match']
+      err('wifi-disconnected match.ssid must be a plain string') if match.is_a?(Hash) && !present_str?(match['ssid'])
+      unknown_keys(trigger, %w[type match], trigger_label)
+      unknown_keys(match, %w[ssid], "#{trigger_label} match") if match.is_a?(Hash)
+    end
+
+    def check_power_trigger(trigger)
+      err('power-source needs source: ac|battery') unless %w[ac battery].include?(trigger['source'])
+      unknown_keys(trigger, %w[type source], trigger_label)
+    end
+
+    def check_file_trigger(trigger)
+      path = trigger['path']
+      err("#{trigger['type']} needs path starting with ~/ or /, at most 200 chars, with no .. segment") unless valid_path?(path)
+      match = trigger['match']
+      err("#{trigger['type']} match must be an object with an optional plain-string name") if
+        !match.nil? && (!match.is_a?(Hash) || (match.key?('name') && !present_str?(match['name'])))
+      unknown_keys(trigger, %w[type path match], trigger_label)
+      unknown_keys(match, %w[name], "#{trigger_label}.match") if match.is_a?(Hash)
+    end
+
+    def check_git_trigger(trigger)
+      err('git-branch-changed needs repo starting with ~/ or /, at most 200 chars, with no .. segment') unless
+        valid_path?(trigger['repo'])
+      warn_missing_repo(trigger['repo'])
+      match = trigger['match']
+      err('git-branch-changed match must be an object with an optional plain-string branch') if
+        !match.nil? && (!match.is_a?(Hash) || (match.key?('branch') && !present_str?(match['branch'])))
+      unknown_keys(trigger, %w[type repo match], trigger_label)
+      unknown_keys(match, %w[branch], "#{trigger_label}.match") if match.is_a?(Hash)
+    end
+
+    def valid_path?(path)
+      present_str?(path) && (path.start_with?('~/') || path.start_with?('/')) && !path.split('/').include?('..')
+    end
+
+    def check_custom_trigger(trigger)
+      err('custom trigger needs name as a lowercase slug') unless trigger['name'].is_a?(String) && trigger['name'].match?(SLUG)
+      unknown_keys(trigger, %w[type name], trigger_label)
+    end
+
+    def check_conditions
+      conditions = @rule.fetch('conditions', [])
+      return unless conditions.is_a?(Array)
+
+      conditions.each do |condition|
+        type = condition.is_a?(Hash) ? condition['type'].to_s : ''
+        check = CONDITION_CHECKS[type]
+        next err("unknown condition type: #{type}") unless check
+
+        send(check, condition)
+      end
+    end
+
+    def check_time_between(condition)
+      valid = condition['from'].to_s.match?(HHMM) && condition['to'].to_s.match?(HHMM)
+      err('time-between needs from/to as HH:MM') unless valid
+      unknown_keys(condition, %w[type from to], 'time-between condition')
+    end
+
+    def check_weekday(condition)
+      days = condition.fetch('days', [])
+      err('weekday needs days from mon..sun') unless days.is_a?(Array) && !days.empty? && (days - Vocabulary::WEEKDAYS).empty?
+      unknown_keys(condition, %w[type days], 'weekday condition')
+    end
+
+    def check_on_power(condition)
+      err('on-power needs source: ac|battery') unless %w[ac battery].include?(condition['source'])
+      unknown_keys(condition, %w[type source], 'on-power condition')
+    end
+
+    def check_lid_state(condition)
+      err('lid-state needs state: open|closed') unless %w[open closed].include?(condition['state'])
+      unknown_keys(condition, %w[type state], 'lid-state condition')
+      warn_lid_unavailable
+    end
+
+    def warn_lid_unavailable
+      message = 'no laptop lid state is currently available; this rule will stay idle'
+      warn(message) unless lid_available? || warnings.include?(message)
+    end
+
+    def lid_available?
+      lid_dir = ENV.fetch('OMAFLOW_LID_DIR', '/proc/acpi/button/lid')
+      Dir.glob(File.join(lid_dir, '*', 'state')).any? { File.file?(it) && File.readable?(it) }
+    rescue StandardError
+      false
+    end
+
+    def check_monitor_present(condition)
+      match = condition['match']
+      err('monitor-present needs a plain-string match') unless present_match?(match, %w[description name])
+      unknown_keys(condition, %w[type match], 'monitor-present condition')
+      unknown_keys(match, %w[description name], 'monitor-present condition match') if match.is_a?(Hash)
+    end
+
+    def check_app_running(condition)
+      match = condition['match']
+      err('app-running needs match.class or match.title as a plain string') unless present_match?(match, %w[class title])
+      unknown_keys(condition, %w[type match], 'app-running condition')
+      unknown_keys(match, %w[class title], 'app-running condition match') if match.is_a?(Hash)
+    end
+
+    def check_on_branch(condition)
+      err('on-branch needs repo starting with ~/ or /, at most 200 chars, with no .. segment') unless
+        valid_path?(condition['repo'])
+      warn_missing_repo(condition['repo'])
+      err('on-branch needs branch as a plain string') unless present_str?(condition['branch'])
+      unknown_keys(condition, %w[type repo branch], 'on-branch condition')
+    end
+
+    def check_hey_events(condition)
+      err('hey-events needs atLeast as an integer 1..50') unless integer_between?(condition['atLeast'], 1..50)
+      unknown_keys(condition, %w[type atLeast], 'hey-events condition')
+      warn_hey_unavailable
+    end
+
+    def check_on_ssid(condition)
+      err('on-ssid needs a plain-string ssid') unless present_str?(condition['ssid'])
+      unknown_keys(condition, %w[type ssid], 'on-ssid condition')
+    end
+
+    def check_actions
+      actions = @rule.fetch('actions', [])
+      return unless actions.is_a?(Array)
+
+      check_action_list(actions)
+    end
+
+    def check_until
+      until_block = @rule['until']
+      return unless until_block.is_a?(Hash)
+
+      unknown_keys(until_block, %w[trigger actions revert], '.until')
+      trigger = until_block['trigger']
+      actions = until_block['actions']
+      revert = until_block['revert']
+      err('until.trigger must be an object') unless trigger.is_a?(Hash)
+      err('until.revert must be true') if until_block.key?('revert') && revert != true
+      if until_block.key?('actions')
+        err('until.actions must be a non-empty array (max 10)') unless actions.is_a?(Array) && actions.size.between?(1, 10)
+      elsif revert != true
+        err('until must have revert: true or 1..10 actions')
+      end
+      validate_trigger(trigger, label: '.until.trigger', manual: false) if trigger.is_a?(Hash)
+      check_action_list(actions) if actions.is_a?(Array)
+      revertible = @rule.fetch('actions', []).any? { it.is_a?(Hash) && Executor::SNAPSHOTTED.key?(it['type']) }
+      warn("nothing in this rule's actions can be reverted") if revert == true && !revertible
+    end
+
+    def valid_while_list?(value) = value.is_a?(Array) && value.size.between?(1, 5)
+
+    def check_while
+      reactions = @rule['while']
+      return unless valid_while_list?(reactions)
+
+      err('while needs an until; the state it reacts in has to end somewhere') unless @rule['until'].is_a?(Hash)
+      reactions.each_with_index { |reaction, index| check_while_reaction(reaction, ".while[#{index}]") }
+    end
+
+    def check_while_reaction(reaction, label)
+      return err("#{label} must be an object with trigger and actions") unless reaction.is_a?(Hash)
+
+      unknown_keys(reaction, %w[trigger actions], label)
+      trigger = reaction['trigger']
+      actions = reaction['actions']
+      err("#{label}.trigger must be an object") unless trigger.is_a?(Hash)
+      err("#{label}.actions must be a non-empty array (max 10)") unless actions.is_a?(Array) && actions.size.between?(1, 10)
+      validate_trigger(trigger, label: "#{label}.trigger", manual: false) if trigger.is_a?(Hash)
+      check_action_list(actions) if actions.is_a?(Array)
+    end
+
+    def check_action_list(actions)
+      actions.each do |action|
+        type = action.is_a?(Hash) ? action['type'].to_s : ''
+        next err('action missing type') if type.empty?
+
+        check = ACTION_CHECKS[type]
+        next err("unknown action type: #{type}") unless check
+
+        send(check, action)
+      end
+    end
+
+    def installed_themes
+      @installed_themes ||= begin
+        output, ok = Sys.capture('omarchy', 'theme', 'list')
+        ok ? output.lines(chomp: true).reject(&:empty?) : nil
+      end
+    end
+
+    def check_theme(action)
+      return err('theme action needs a plain-string name') unless safe_str?(action['name'])
+
+      unknown_keys(action, %w[type name], "#{action['type']} action")
+      themes = installed_themes
+      return if themes.nil? || themes.any? { it.casecmp?(action['name']) }
+
+      err("theme not installed: #{action['name']} (omarchy theme list)")
+    end
+
+    def check_state_action(action)
+      err("#{action['type']} needs state: on|off") unless %w[on off].include?(action['state'])
+      unknown_keys(action, %w[type state], "#{action['type']} action")
+    end
+
+    def check_launch(action)
+      return err('launch action needs a plain-string app') unless safe_str?(action['app'])
+
+      unknown_keys(action, %w[type app workspace], 'launch action')
+      err("no desktop entry found for app: #{action['app']}") unless Desktop.resolve(action['app'])
+      return unless action.key?('workspace')
+
+      err('launch workspace must be an integer 1..10') unless integer_between?(action['workspace'], 1..10)
+    end
+
+    def check_workspace(action)
+      err('workspace needs an integer number 1..10') unless integer_between?(action['number'], 1..10)
+      unknown_keys(action, %w[type number], 'workspace action')
+    end
+
+    def check_audio_output(action)
+      return err('audio-output needs a plain-string match') unless safe_str?(action['match'])
+
+      unknown_keys(action, %w[type match], 'audio-output action')
+      return unless Sys.which('pactl')
+
+      output, ok = Sys.capture('pactl', '--format=json', 'list', 'sinks')
+      return unless ok
+
+      sinks = begin
+        JSON.parse(output)
+      rescue StandardError
+        []
+      end
+      present = sinks.any? { "#{it['description']} #{it['name']}".downcase.include?(action['match'].downcase) }
+      warn("no currently connected sink matches: #{action['match']} (may appear later)") unless present
+    end
+
+    def check_script(action)
+      name = action['name']
+      err('script action needs a lowercase allowlisted name') unless ScriptRegistry.valid_name?(name)
+      unknown_keys(action, %w[type name], 'script action')
+      return unless ScriptRegistry.valid_name?(name)
+
+      if ScriptRegistry.entry(name).nil?
+        err("no script named '#{name}' — add it with: omaflow scripts add #{name} /absolute/path")
+      elsif ScriptRegistry.resolve(name).nil?
+        err("script '#{name}' is unavailable or not safely executable")
+      elsif ScriptRegistry.available(name).nil?
+        err("script '#{name}' requires a compatible service that is not available")
+      end
+    end
+
+    def check_webhook(action)
+      unless action['endpoint'].is_a?(String) && action['endpoint'].match?(SHORT_SLUG)
+        err('webhook needs endpoint as a short lowercase slug')
+      end
+      err('webhook needs a plain-string message (max 400, no leading dash or control chars)') unless safe_str?(action['message'], max: 400)
+      unknown_keys(action, %w[type endpoint message], 'webhook action')
+      endpoint = action['endpoint'].to_s
+      return if endpoint.empty? || Store.read_json(Paths.webhooks_file, {}).key?(endpoint)
+
+      err("no webhook endpoint named '#{endpoint}' — add it with: omaflow webhooks add #{endpoint} <url> [format]")
+    end
+
+    def check_hey_timetrack(action)
+      err('hey-timetrack needs mode: start|stop|switch') unless %w[start stop switch].include?(action['mode'])
+      if action.key?('category') && !safe_str?(action['category'], max: 100)
+        err('hey-timetrack category must be a plain string (max 100, no leading dash or control chars)')
+      end
+      if action.key?('categoryFromRepo') && !valid_path?(action['categoryFromRepo'])
+        err('hey-timetrack categoryFromRepo must start with ~/ or /, be at most 200 chars, and contain no .. segment')
+      end
+      warn_missing_repo(action['categoryFromRepo'])
+      err('hey-timetrack category and categoryFromRepo are mutually exclusive') if
+        action.key?('category') && action.key?('categoryFromRepo')
+      unknown_keys(action, %w[type mode category categoryFromRepo], 'hey-timetrack action')
+      warn_hey_unavailable
+    end
+
+    def check_hey_agenda(action)
+      if action.key?('title') && !safe_str?(action['title'], max: 80)
+        err('hey-agenda title must be a plain string (max 80, no leading dash or control chars)')
+      end
+      err('hey-agenda skipWhenEmpty must be a boolean') if
+        action.key?('skipWhenEmpty') && ![true, false].include?(action['skipWhenEmpty'])
+      unknown_keys(action, %w[type title skipWhenEmpty], 'hey-agenda action')
+      warn_hey_unavailable
+    end
+
+    def warn_hey_unavailable
+      message = 'hey CLI is not installed; this rule will fail until it is'
+      warn(message) unless Sys.which('hey') || warnings.include?(message)
+    end
+
+    def check_notify(action)
+      err('notify needs a plain-string message (no leading dash or control chars)') unless safe_str?(action['message'])
+      err('notify title must be a plain string (max 60, no leading dash)') if action.key?('title') && !safe_str?(action['title'], max: 60)
+      unknown_keys(action, %w[type title message], 'notify action')
+    end
+
+    def check_agent(action)
+      err('agent task must be a plain string (max 300, no leading dash or control chars)') unless safe_str?(action['task'], max: 300)
+      can = action['can']
+      valid_can = can.is_a?(Array) && !can.empty? && can.uniq == can && (can - Vocabulary::AGENT_OPS).empty?
+      err("agent can must be a non-empty subset of: #{Vocabulary::AGENT_OPS.join(', ')}") unless valid_can
+      timeout = action.fetch('timeoutSeconds', 120)
+      err('agent timeoutSeconds must be an integer 10..180') unless integer_between?(timeout, 10..180)
+      unknown_keys(action, %w[type task can timeoutSeconds], 'agent action')
+      cooldown = @rule.fetch('cooldownSeconds', 60)
+      spacing = 'agent actions need cooldownSeconds of at least 60 for spacing'
+      err(spacing) if cooldown.is_a?(Numeric) && cooldown < 60 && !errors.include?(spacing)
+      warning = 'no supported agent CLI is installed; this agent action cannot run'
+      warn(warning) unless Agent.resolve || warnings.include?(warning)
+    end
+  end
+end

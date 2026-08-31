@@ -1,8 +1,11 @@
 # User shell overrides. Survives theme switches.
 # Matches the old Waybar height.
 
+[font]
+base-size = 16
+
 [bar]
-size-horizontal = 36
+size-horizontal = 37
 
 # Bar flyouts (audio, bluetooth, network, clock, weather, …).
 # Opaque Catppuccin base so they stay readable over wallpaper.

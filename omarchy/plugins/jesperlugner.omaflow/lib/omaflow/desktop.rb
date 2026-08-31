@@ -1,0 +1,45 @@
+# frozen_string_literal: true
+
+module Omaflow
+  module Desktop
+    module_function
+
+    def application_dirs
+      data_home = Paths.env_dir('XDG_DATA_HOME', '.local', 'share')
+      [File.join(data_home, 'applications'), '/usr/share/applications', '/usr/local/share/applications']
+    end
+
+    def resolve(app)
+      application_dirs.each do |dir|
+        next unless Dir.exist?(dir)
+
+        entries = Dir.glob(File.join(dir, '*.desktop'))
+        found = entries.find { desktop_name?(it, app) } ||
+                entries.find { File.basename(it) == "#{app}.desktop" } ||
+                entries.find { File.basename(it).downcase.include?(app.downcase) }
+        return File.basename(found, '.desktop') if found
+      end
+      nil
+    end
+
+    def desktop_head(path)
+      File.open(path, File::RDONLY | File::NOFOLLOW) { it.read(65_536) }.to_s
+    rescue Errno::ELOOP
+      File.read(path, 65_536).to_s
+    rescue StandardError
+      ''
+    end
+
+    def desktop_name?(path, app)
+      desktop_head(path).lines.any? { it.match?(/\AName=#{Regexp.escape(app)}\s*\z/i) }
+    end
+
+    def installed_app_names(limit: 150)
+      application_dirs.flat_map do |dir|
+        Dir.glob(File.join(dir, '*.desktop')).filter_map do |path|
+          desktop_head(path).lines.find { it.start_with?('Name=') }&.delete_prefix('Name=')&.strip
+        end
+      end.uniq.sort.first(limit)
+    end
+  end
+end

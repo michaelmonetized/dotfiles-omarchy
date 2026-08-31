@@ -1,0 +1,73 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: archlinux:latest
+    steps:
+      - name: Install dependencies
+        run: pacman -Syu --noconfirm jq git util-linux findutils ruby rubocop
+
+      - uses: actions/checkout@v4
+
+      - name: Syntax-check sources
+        run: for f in bin/* lib/omaflow.rb lib/omaflow/*.rb; do ruby -c "$f" >/dev/null; done && bash -n scripts/* tests/*.sh
+
+      - name: Lint
+        run: rubocop --no-color lib bin
+
+      - name: Manifest sanity check
+        run: |
+          jq -e '
+            .schemaVersion == 1
+            and .id == "jesperlugner.omaflow"
+            and (.version | test("^[0-9]+\\.[0-9]+\\.[0-9]+$"))
+            and (.entryPoints.overlay | length > 0)
+            and (.entryPoints.service | length > 0)
+          ' manifest.json
+
+      - name: Own the workspace chain for the script trust chain
+        run: |
+          dir="$PWD"
+          while [ "$dir" != "/" ]; do chown "$(id -u)" "$dir" 2>/dev/null || true; chmod go-w "$dir" 2>/dev/null || true; dir=$(dirname "$dir"); done
+          chown -R "$(id -u)" . 2>/dev/null || true
+          chmod -R go-w .
+
+      - name: Vocabulary drift check
+        run: tests/test-docs.sh
+
+      - name: Validator fixtures
+        run: tests/test-validate.sh
+
+      - name: Engine integration test
+        run: tests/test-eval.sh
+
+      - name: Until lifecycle test
+        run: tests/test-until.sh
+
+      - name: HEY integration test
+        run: tests/test-hey.sh
+
+      - name: Authoring pipeline test
+        run: tests/test-author.sh
+
+      - name: Visual editor CLI test
+        run: tests/test-editor.sh
+
+      - name: Agent action test
+        run: tests/test-agent-action.sh
+
+      - name: Resource hardening test
+        run: tests/test-hardening.sh
+
+
+      - name: Onboarding setup test
+        run: tests/test-setup.sh
+
+      - name: Script allowlist test
+        run: tests/test-scripts.sh
