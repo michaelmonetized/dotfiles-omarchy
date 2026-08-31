@@ -1,6 +1,17 @@
 -- Change the default Omarchy look'n'feel.
+-- Gaps and rounding live in the Hurleyus theme (hyprland.lua).
 
--- https://wiki.hypr.land/Configuring/Basics/Variables/#general
+-- Default rule is 0.985 / 0.96. Nudge the focused window a hair more open.
+o.window({ tag = "default-opacity" }, { opacity = "0.90 0.86" })
+
+-- Omasnap capture/annotation overlay: no animation, never screen-shared.
+hl.layer_rule({
+	match = { namespace = "^omasnap$" },
+	no_anim = true,
+	animation = "none",
+	no_screen_share = true,
+})
+
 -- hl.config({
 --   general = {
 --     -- No gaps between windows or borders.

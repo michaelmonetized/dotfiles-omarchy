@@ -1,0 +1,39 @@
+[appearance]
+theme = "auto"
+accent = "#7aa2f7"
+radius = 24
+panel_width = 760
+panel_height = 540
+opacity = 1.00
+
+[behavior]
+hover_open = true
+hover_ms = 180
+hover_band_px = 8
+collapse_on_leave_ms = 180
+hide_fullscreen = true
+monitors = "all"
+
+[features]
+media = true
+shelf = true
+clipboard = true
+calendar = true
+timer = true
+notifications = true
+battery_chip = true
+
+[clipboard]
+max_entries = 200
+max_image_bytes = 8388608
+
+[hud]
+timeout_ms = 1400
+
+[clock]
+format = "%H:%M"
+show_in_pill = false
+
+[calendar]
+feeds = ["https://calendar.google.com/calendar/ical/michaelmonetized%40gmail.com/private-ce58b5dcbc074cc4fae6fa054738646e/basic.ics"]
+refresh_min = 1

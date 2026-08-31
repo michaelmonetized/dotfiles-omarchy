@@ -1,0 +1,6 @@
+#!/usr/bin/ruby
+# frozen_string_literal: true
+
+require_relative '../lib/omaflow'
+
+exit Omaflow::CLI.dispatch(File.basename($PROGRAM_NAME), ARGV)

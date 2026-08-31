@@ -1,71 +1,13 @@
-local selection_layers = 0
-local selection_binds = {}
-
 for workspace = 1, 10 do
 	local key = "code:" .. tostring(workspace + 9)
 	hl.unbind("SUPER + " .. key)
-	hl.unbind("SUPER + SHIFT + ")
+	hl.unbind("SUPER + SHIFT + " .. key)
 	hl.unbind("SUPER + SHIFT + ALT + " .. key)
 end
 
 for index = 1, 5 do
 	hl.unbind("SUPER + ALT + code:" .. tostring(index + 9))
 end
-
-hl.on("layer.opened", function(layer)
-	if layer.namespace == "selection" then
-		selection_layers = selection_layers + 1
-		if selection_layers == 1 then
-			selection_binds = {
-				hl.unbind("RETURN"),
-				hl.unbind("CTRL + RETURN"),
-				hl.unbind("CTRL + TAB"),
-
-				hl.bind(
-					"SPACE",
-					hl.dsp.exec_cmd("omarchy-capture-region --take-window"),
-					{ description = "Capture highlighted window" }
-				),
-				hl.bind(
-					"RETURN",
-					hl.dsp.exec_cmd("omarchy-capture-region --take-fullscreen"),
-					{ description = "Capture entire screen" }
-				),
-				hl.bind(
-					"SHIFT + TAB",
-					hl.dsp.exec_cmd("omarchy-capture-region --select-window prev"),
-					{ description = "Select previous window to capture" }
-				),
-			}
-
-			local dir_to_key = { left = "H", right = "L", up = "K", down = "J" }
-
-			for _, direction in ipairs({ "left", "right", "up", "down" }) do
-				table.insert(
-					selection_binds,
-					hl.unbind(direction:upper()),
-					hl.bind(
-						dir_to_key[direction],
-						hl.dsp.exec_cmd("omarchy-capture-region --select-window " .. direction),
-						{ description = "Select window to capture" }
-					)
-				)
-			end
-		end
-	end
-end)
-
-hl.on("layer.closed", function(layer)
-	if layer.namespace == "selection" and selection_layers > 0 then
-		selection_layers = selection_layers - 1
-		if selection_layers == 0 then
-			for _, keybind in ipairs(selection_binds) do
-				keybind:unbind()
-			end
-			selection_binds = {}
-		end
-	end
-end)
 
 hl.unbind("ALT + PRINT")
 hl.unbind("ALT + SHIFT + H")
@@ -251,20 +193,24 @@ local ws_to_name = {
 
 for workspace = 1, 10 do
 	local key = ws_to_key[workspace]
-	local name = ws_to_name[workspace]
-	o.bind(
-		"SUPER + ALT + " .. key,
-		"Move window to " .. name .. " space",
-		hl.dsp.window.move({ workspace = tostring(workspace) })
-	)
-	o.bind(
-		"SUPER + SHIFT + ALT + " .. key,
-		"Silently move window to " .. name .. " space",
-		hl.dsp.window.move({ workspace = tostring(workspace), follow = false })
-	)
+	if key ~= "C" then -- C is freed for SUPER+ALT+C screenshot
+		local name = ws_to_name[workspace]
+		o.bind(
+			"SUPER + ALT + " .. key,
+			"Move window to " .. name .. " space",
+			hl.dsp.window.move({ workspace = tostring(workspace) })
+		)
+		o.bind(
+			"SUPER + SHIFT + ALT + " .. key,
+			"Silently move window to " .. name .. " space",
+			hl.dsp.window.move({ workspace = tostring(workspace), follow = false })
+		)
+	end
 end
 
 o.bind("ALT + B", "Browser", { omarchy = "browser" })
+o.bind("ALT + T", "T3 Code", o.launch_webapp_sole("t3 Code", "https://app.t3.codes/"))
+o.bind("ALT + R", "Reload Hyprland", "hyprctl reload && omarchy restart shell")
 o.bind("ALT + H", "Focus on left window", hl.dsp.focus({ direction = "l" }))
 o.bind("ALT + J", "Focus on below window", hl.dsp.focus({ direction = "d" }))
 o.bind("ALT + K", "Focus on above window", hl.dsp.focus({ direction = "u" }))
@@ -291,6 +237,62 @@ o.bind("ALT + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ next =
 o.bind("SUPER + SHIFT + code:15", "Capture menu", "omarchy-menu toggle capture")
 o.bind("SUPER + SPACE", "Vicinae", "vicinae toggle")
 o.bind("ALT + TAB", "Next window", hl.dsp.window.cycle_next())
--- Physical Left Control is Hyper via keyd: Super+Ctrl+Alt+Shift.
+-- Physical Left Control is Hyper via keyd: Super+Ctrl+Alt+Shift (includes Shift).
 local hyper = "SUPER + CTRL + ALT + SHIFT"
 o.bind(hyper .. " + D", "Toggle dictation", "voxtype record toggle")
+local text_ai = os.getenv("HOME") .. "/.local/bin/text-ai"
+o.bind(hyper .. " + F", "Fix spelling and grammar", text_ai .. " fix")
+o.bind(hyper .. " + SLASH", "Dictate prompt", text_ai .. " dictate")
+
+-- Forward chords to the focused app. Explicit down/up split avoids Hyprland
+-- send_shortcut leaving synthetic key state stuck (see default clipboard.lua).
+-- Sending to the focused surface by omitting the window target means the
+-- physically held SUPER/ALT does NOT merge into the injected chord.
+local function send_chord(mods, key)
+	return function()
+		hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "down" }))
+		hl.timer(function()
+			hl.dispatch(hl.dsp.send_key_state({ mods = mods, key = key, state = "up" }))
+		end, { timeout = 50, type = "oneshot" })
+	end
+end
+
+hl.unbind("SUPER + ALT + C")
+o.bind("SUPER + ALT + C", "Screenshot", "omasnap")
+
+-- Super+Shift+F was unbound with the rest of Omarchy's defaults.
+-- Synchro overlay: Nautilus stays the folder MIME default.
+hl.unbind("SUPER + ALT + SHIFT + F")
+o.bind("ALT + grave", "Synchro", { omarchy = "synchro" })
+o.bind("SUPER + grave", "Synchro (cwd)", { omarchy = "synchro-cwd" })
+
+hl.unbind("SUPER + A")
+o.bind("SUPER + A", "Select all", send_chord("CTRL", "A"))
+
+hl.unbind("SUPER + LEFT")
+o.bind("SUPER + LEFT", "Cursor to line start", send_chord("", "Home"))
+o.bind("SUPER + code:19", "Cursor to line start", send_chord("", "Home"))
+
+hl.unbind("SUPER + RIGHT")
+o.bind("SUPER + RIGHT", "Cursor to line end", send_chord("", "End"))
+o.bind("SUPER + SHIFT + code:13", "Cursor to line end", send_chord("", "End"))
+
+hl.unbind("SUPER + UP")
+o.bind("SUPER + UP", "Cursor to top", send_chord("CTRL", "Home"))
+hl.unbind("SUPER + G")
+o.bind("SUPER + G", "Cursor to top", send_chord("CTRL", "Home"))
+
+hl.unbind("SUPER + DOWN")
+o.bind("SUPER + DOWN", "Cursor to bottom", send_chord("CTRL", "End"))
+hl.unbind("SUPER + SHIFT + G")
+o.bind("SUPER + SHIFT + G", "Cursor to bottom", send_chord("CTRL", "End"))
+
+o.bind("ALT + LEFT", "Move cursor one word left", send_chord("CTRL", "Left"))
+o.bind("ALT + RIGHT", "Move cursor one word right", send_chord("CTRL", "Right"))
+
+o.bind("SHIFT + ALT + LEFT", "Move cursor one word left", send_chord("CTRL + SHIFT", "Left"))
+o.bind("SHIFT + ALT + RIGHT", "Move cursor one word right", send_chord("CTRL + SHIFT", "Right"))
+
+o.bind("SUPER + SHIFT + comma", "Dismiss all notifications", "omarchy-shell notifications dismissAll")
+
+o.bind("SUPER + SHIFT + U", "Automations (Omaflow)", "$HOME/.config/omarchy/plugins/jesperlugner.omaflow/bin/omaflow")
