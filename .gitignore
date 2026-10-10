@@ -84,7 +84,7 @@ Restore Firefox/
 Deskflow/tls/
 graphite/auth
 pulse/cookie
-slopops/
+/slopops/
 **/secrets.env
 **/*.session
 Grok Bot/
