@@ -22,9 +22,20 @@ require("hypr.bindings")
 require("hypr.looknfeel")
 require("hypr.autostart")
 require("hypr.apps.synchro")
+require("hypr.apps.omatainer")
 
 -- Toggle config flags dynamically.
 require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
+
+-- intelpro: user wrappers must beat /usr/share/omarchy/bin. The Display
+-- panel's DDC brightness probe on DP AUX drops the Acer.
+do
+  local local_bin = (os.getenv("HOME") or "/home/michael") .. "/.local/bin"
+  local path = os.getenv("PATH") or "/usr/bin"
+  if path:sub(1, #local_bin + 1) ~= local_bin .. ":" then
+    hl.env("PATH", local_bin .. ":" .. path)
+  end
+end

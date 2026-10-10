@@ -1,0 +1,7 @@
+# intelpro: DDC over i915 DisplayPort AUX drops the Acer V226HQL.
+# The Omarchy Display panel reads VCP 10 on open (and every 5s while open).
+[global]
+options = --ignore-mmid ACR-Acer_V226HQL-814
+
+[ddcutil]
+options = --ignore-mmid ACR-Acer_V226HQL-814 --ignore-bus 5

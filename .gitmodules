@@ -1,0 +1,6 @@
+[submodule "omarchy/plugins/cl.villagranquiroz.omarchy-link"]
+	path = omarchy/plugins/cl.villagranquiroz.omarchy-link
+	url = https://github.com/avillagran/omarchy-link
+[submodule "omarchy/plugins/com.omastorm.radar"]
+	path = omarchy/plugins/com.omastorm.radar
+	url = https://github.com/wesleygrimes/omastorm
