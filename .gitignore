@@ -78,3 +78,27 @@ obsidian/id
 
 # Browser profile backups (large, personal data)
 Restore Firefox/
+
+# Credentials, app state, telemetry and logs (never commit)
+.wrangler/
+Deskflow/tls/
+graphite/auth
+pulse/cookie
+slopops/
+**/secrets.env
+**/*.session
+Grok Bot/
+Codex/
+t3code-v2/
+go/telemetry/
+ibus/bus/
+obs-studio/logs/
+obs-studio/profiler_data/
+obs-studio/plugin_config/obs-browser/
+obs-studio/plugin_config/obs-websocket/config.json
+obs-studio/basic/profiles/*/service.json*
+obs-studio/basic/profiles/*/extra_services.json*
+resend/credentials.json
+icloudpd/
+keylens/stream-token
+omadesign/cloud-identity.json
