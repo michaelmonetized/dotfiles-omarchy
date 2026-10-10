@@ -69,7 +69,7 @@ fi
 # Cursor
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.vite-plus/bin:$PATH"
-source "$HOME/.config/zsh/tokens"
+[[ -f "$HOME/.config/zsh/tokens" ]] && source "$HOME/.config/zsh/tokens"
 
 # Node.js config
 [[ ! -f ~/.config/zsh/node ]] || source ~/.config/zsh/node

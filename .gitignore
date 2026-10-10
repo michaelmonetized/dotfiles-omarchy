@@ -102,3 +102,8 @@ resend/credentials.json
 icloudpd/
 keylens/stream-token
 omadesign/cloud-identity.json
+
+# Shell tokens (sourced by zsh/rc when present)
+zsh/tokens
+obs-studio/basic/profiles/*/basic.ini
+obs-studio/user.ini
