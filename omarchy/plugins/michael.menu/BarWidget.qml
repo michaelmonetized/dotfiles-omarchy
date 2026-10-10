@@ -1,20 +1,16 @@
 import QtQuick
-import Quickshell
 import qs.Ui
+import Quickshell.Io
 
 BarWidget {
   id: root
-  moduleName: "omarchy.menu"
-
-  property string hostname: ""
-
-  FileView {
-    id: hostnameFile
-    path: "/etc/hostname"
-    watchChanges: false
-    printErrors: false
-    onLoaded: root.hostname = String(text() || "").trim()
+  property string hostname: "…"
+  Process {
+    command: ["sh", "-c", "$HOME/.config/desktop/bin/machine-hostname"]
+    running: true
+    stdout: StdioCollector { onStreamFinished: root.hostname = text.trim() }
   }
+  moduleName: "omarchy.menu"
 
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
@@ -23,7 +19,7 @@ BarWidget {
     id: button
     anchors.fill: parent
     bar: root.bar
-    text: root.setting("label", "󱁏 " + root.hostname)
+    text: "󱁏 " + root.hostname
     horizontalMargin: 12
     onPressed: function(button) {
       if (!root.bar) return

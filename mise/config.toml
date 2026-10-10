@@ -1,6 +1,10 @@
 [tools]
 bun = "1.4.2"
+claude = "latest"
 codex = "latest"
 gh = "latest"
-node = "26.2.0"
-"npm:@xai-official/grok" = "latest"
+grok = { version = "latest", bin = "grok", platforms = { windows-arm64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-aarch64.exe" }, windows-x64 = { bin = "grok.exe", url = "https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-windows-x86_64.exe" } }, url = 'https://storage.googleapis.com/grok-build-public-artifacts/cli/grok-{{ version }}-{{ os() }}-{{ arch(arm64="aarch64", x64="x86_64") }}', version_list_url = "https://x.ai/cli/stable" }
+opencode = "latest"
+
+[settings.upgrade]
+auto_prune = false

@@ -80,10 +80,10 @@ return {
       vim.cmd "let g:minimap_left = 0"
 
       vim.cmd "hi minimapRange guibg=#dce0e8 guifg=#5c5f77"
-      vim.cmd "g:minimap_range_color = 'minimapRange'"
+      vim.g.minimap_range_color = "minimapRange"
 
-      vim.cmd "hi.minimap_cursor_color guibg=#e6e9ef guifg=#209fb5"
-      vim.cmd "g:minimap_cursor_color = 'minimap_cursor_color'"
+      vim.cmd "hi minimap_cursor_color guibg=#e6e9ef guifg=#209fb5"
+      vim.g.minimap_cursor_color = "minimap_cursor_color"
     end,
   },
   { "catppuccin/nvim", name = "catppuccin", priority = 1000, lazy = false },

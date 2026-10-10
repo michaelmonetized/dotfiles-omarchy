@@ -6,7 +6,7 @@ for workspace = 1, 10 do
 end
 
 for index = 1, 5 do
-	hl.unbind("SUPER + ALT + code:" .. tostring(index + 9))
+  hl.unbind("SUPER + ALT + code:" .. tostring(index + 9), "Switch to group window " .. index, hl.dsp.group.active({ index = index }))
 end
 
 hl.unbind("ALT + PRINT")
@@ -166,29 +166,29 @@ o.bind("ALT + S", "Switch to stream workspace", hl.dsp.focus({ workspace = "9" }
 o.bind("ALT + P", "Switch to play workspace", hl.dsp.focus({ workspace = "10" }))
 
 local ws_to_key = {
-	"G",
-	"Z",
-	"A",
-	"C",
-	"M",
-	"D",
-	"W",
-	"E",
-	"S",
-	"P",
+  "G",
+  "Z",
+  "A",
+  "C",
+  "M",
+  "D",
+  "W",
+  "E",
+  "S",
+  "P"
 }
 
 local ws_to_name = {
-	"terminal",
-	"browser",
-	"agents",
-	"comms",
-	"money",
-	"design",
-	"work",
-	"entertain",
-	"stream",
-	"play",
+  "terminal",
+  "browser",
+  "agents",
+  "comms",
+  "money",
+  "design",
+  "work",
+  "entertain",
+  "stream",
+  "play"
 }
 
 for workspace = 1, 10 do
@@ -237,8 +237,9 @@ o.bind("ALT + SHIFT + TAB", "Previous window", hl.dsp.window.cycle_next({ next =
 o.bind("SUPER + SHIFT + code:15", "Capture menu", "omarchy-menu toggle capture")
 o.bind("SUPER + SPACE", "Vicinae", "vicinae toggle")
 o.bind("ALT + TAB", "Next window", hl.dsp.window.cycle_next())
--- Physical Left Control is Hyper via keyd: Super+Ctrl+Alt+Shift (includes Shift).
-local hyper = "SUPER + CTRL + ALT + SHIFT"
+-- Physical Left Control is Hyper via keyd: Super+Ctrl+Alt (no Shift).
+-- Shift was eating number-row passwords in pkexec (4→$, 9→(, 6→^, 5→%).
+local hyper = "SUPER + CTRL + ALT"
 o.bind(hyper .. " + D", "Toggle dictation", "voxtype record toggle")
 local text_ai = os.getenv("HOME") .. "/.local/bin/text-ai"
 o.bind(hyper .. " + F", "Fix spelling and grammar", text_ai .. " fix")
@@ -293,10 +294,19 @@ o.bind("ALT + RIGHT", "Move cursor one word right", send_chord("CTRL", "Right"))
 o.bind("SHIFT + ALT + LEFT", "Move cursor one word left", send_chord("CTRL + SHIFT", "Left"))
 o.bind("SHIFT + ALT + RIGHT", "Move cursor one word right", send_chord("CTRL + SHIFT", "Right"))
 
--- Naarchy owns org.freedesktop.Notifications (omarchy.notifications is in shell.json disabledPlugins).
-o.bind("SUPER + SHIFT + comma", "Dismiss all notifications", "naarchy notifications clear")
-o.bind("SUPER + comma", "Dismiss last notification", "naarchy notifications dismiss")
-o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", "naarchy notifications dnd toggle")
-o.bind("SUPER + ALT + comma", "Invoke last notification", "naarchy notifications invoke")
+-- Notification keys go to whichever daemon owns org.freedesktop.Notifications:
+-- Naarchy (features.notifications = true, omarchy.notifications in shell.json
+-- disabledPlugins), else Omarchy's shell.
+local function notify_key(naarchy_args, omarchy_cmd)
+	return "if busctl --user status org.freedesktop.Notifications 2>/dev/null | grep -q '^Comm=naarchy'; then naarchy notifications "
+		.. naarchy_args .. "; else " .. omarchy_cmd .. "; fi"
+end
+o.bind("SUPER + SHIFT + comma", "Dismiss all notifications", notify_key("clear", "omarchy-shell notifications dismissAll"))
+o.bind("SUPER + comma", "Dismiss last notification", notify_key("dismiss", "omarchy-shell notifications dismissOne"))
+o.bind("SUPER + CTRL + comma", "Toggle silencing notifications", notify_key("dnd toggle", "omarchy-toggle-notification-silencing"))
+o.bind("SUPER + ALT + comma", "Invoke last notification", notify_key("invoke", "omarchy-shell notifications invokeLast"))
 
 o.bind("SUPER + SHIFT + U", "Automations (Omaflow)", "$HOME/.config/omarchy/plugins/jesperlugner.omaflow/bin/omaflow")
+
+
+hl.bind("CTRL + SHIFT + 2", hl.dsp.global("com.t3tools.T3Code:capture-window"))

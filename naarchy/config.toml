@@ -1,10 +1,22 @@
+# naarchy configuration — hot-reloads on save
 [appearance]
-theme = "auto"
-accent = "#7aa2f7"
+theme = "auto"          # auto | dark | light
+omarchy = true          # pull accent/background/foreground from the active omarchy theme
+                        # (set false to use the values below)
+# accent = "#89b4fa"    # uncomment to override the theme accent
+# pill_bg = "#000000"   # capsule color (default: solid black / omarchy background)
+# bg = "rgba(0,0,0,0.62)"
+# fg = "#cdd6f4"
+# icon_font = "JetBrainsMono Nerd Font"   # dock icon glyphs
 radius = 24
-panel_width = 760
-panel_height = 540
-opacity = 1.00
+notch_mode = false        # true = hug a physical notch (~190px pill)
+# pill_width_notch = 190
+# pill_width_island = 370
+# margin_top = 0            # pixels below the top edge (0 = flush)
+panel_width = 680
+panel_height = 460
+opacity = 0.98
+reduce_motion = false
 
 [behavior]
 hover_open = true
@@ -12,7 +24,7 @@ hover_ms = 180
 hover_band_px = 8
 collapse_on_leave_ms = 180
 hide_fullscreen = true
-monitors = "all"
+monitors = "all"        # all | primary
 
 [features]
 media = true
@@ -20,11 +32,10 @@ shelf = true
 clipboard = true
 calendar = true
 timer = true
-notifications = true
-battery_chip = true
+notifications = false   # own org.freedesktop.Notifications (leave false to keep mako/dunst)
 
 [clipboard]
-max_entries = 200
+max_entries = 80
 max_image_bytes = 8388608
 
 [hud]
@@ -32,8 +43,9 @@ timeout_ms = 1400
 
 [clock]
 format = "%H:%M"
-show_in_pill = false
+show_in_pill = false     # the bar already has a clock
 
 [calendar]
-feeds = ["REMOVED_PRIVATE_CALENDAR_URL"]
-refresh_min = 1
+feeds = []            # public iCloud / Google ICS feed URLs (one per line)
+refresh_min = 5
+travel_times = false   # optional: IP location + event addresses sent to routing providers

@@ -59,7 +59,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# source ~/fzf-git.sh/fzf-git.sh
+[[ -f "$HOME/fzf-git.sh/fzf-git.sh" ]] && source "$HOME/fzf-git.sh/fzf-git.sh"
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
@@ -91,4 +91,11 @@ _fzf_comprun() {
   esac
 }
 
-export BAT_THEME="Monokai Extended Light"
+export BAT_THEME="Catppuccin Mocha"
+
+# fzf-tab preview configuration (matches _fzf_comprun behavior)
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --tree --color=always --all $realpath | head -200'
+zstyle ':fzf-tab:complete:(export|unset):*' fzf-preview 'eval echo \$$word'
+zstyle ':fzf-tab:complete:ssh:*' fzf-preview 'dig $word'
+zstyle ':fzf-tab:complete:(code|micro|nvim|vim|nano|bat|cat|open|cp|mv|rm):*' fzf-preview 'bat -n --color=always --line-range :500 $realpath 2>/dev/null || cat $realpath'
+zstyle ':fzf-tab:complete:*:*' fzf-preview '[ -d $realpath ] && eza --tree --color=always $realpath | head -200 || bat -n --color=always --line-range :500 $realpath 2>/dev/null'

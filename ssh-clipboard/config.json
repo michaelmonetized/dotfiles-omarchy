@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "node_id": "05f7e151-229d-4f29-a454-3d525b135fa9",
+  "node_name": "hpeliteclient",
+  "peers": [
+    {
+      "name": "m1pro13",
+      "ssh_command": "ssh -i ~/.ssh/id_ed25519 -o IdentitiesOnly=yes hustlelaunch@100.66.53.120"
+    }
+  ],
+  "max_bytes": 268435456,
+  "poll_interval_ms": 75,
+  "headless_x11": false
+}

@@ -41,18 +41,22 @@ local function ancestor_process_named(name)
 end
 
 function M.setup()
+  if vim.fn.has "mac" == 1 then
+    return
+  end
+
   local in_tmux = vim.env.TMUX ~= nil
   local in_ssh = vim.env.SSH_TTY ~= nil or vim.env.SSH_CONNECTION ~= nil
-  local in_herdr = vim.env.HERDR_PANE_ID ~= nil or ancestor_process_named("herdr")
+  local in_herdr = vim.env.HERDR_PANE_ID ~= nil or ancestor_process_named "herdr"
 
   if not (in_tmux or in_ssh or in_herdr) then
     return
   end
 
-  local osc52 = require("vim.ui.clipboard.osc52")
+  local osc52 = require "vim.ui.clipboard.osc52"
   local has_wayland = vim.env.WAYLAND_DISPLAY ~= nil
-    and vim.fn.executable("wl-copy") == 1
-    and vim.fn.executable("wl-paste") == 1
+    and vim.fn.executable "wl-copy" == 1
+    and vim.fn.executable "wl-paste" == 1
 
   local function copy(register)
     local emit = osc52.copy(register)
@@ -90,8 +94,8 @@ function M.setup()
 
   vim.g.clipboard = {
     name = "OmarchyRemoteClipboard",
-    copy = { ["+"] = copy("+"), ["*"] = copy("*") },
-    paste = { ["+"] = paste("+"), ["*"] = paste("*") },
+    copy = { ["+"] = copy "+", ["*"] = copy "*" },
+    paste = { ["+"] = paste "+", ["*"] = paste "*" },
     cache_enabled = 0,
   }
 end
